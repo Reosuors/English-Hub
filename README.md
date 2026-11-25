@@ -1,74 +1,92 @@
 # English Hub — مركز تعلّم الإنجليزية
 
-تطبيق ويب تفاعلي لتعلّم اللغة الإنجليزية (البريطانية) خطوة بخطوة للناطقين بالعربية — من مستوى ما قبل التأسيس (Pre-Entry) حتى المستوى الثاني (Level 2)، يعمل بدون الحاجة إلى خطوات بناء (Pure HTML / CSS / ES Modules + PWA).
+تطبيق تفاعلي لتعلّم اللغة الإنجليزية (البريطانية) خطوة بخطوة للناطقين بالعربية — من مستوى ما قبل التأسيس (Pre-Entry) حتى المستوى الثاني (Level 2)، متاح على **الويب، أندرويد، آيفون (PWA)، ويندوز، وماك** مع ملفات مصدرية نظيفة سهلة التعديل.
 
-An interactive British English learning web app designed for Arabic speakers (Pre-Entry to Level 2). Built with vanilla HTML, CSS, and ES Modules with full PWA offline support — no build step required.
+An interactive British English learning app for Arabic speakers (Pre-Entry to Level 2), available on **Web, Android, iPhone (PWA), Windows, and macOS** — built on pure HTML, CSS, and ES Modules with automated multi-platform GitHub Actions builds.
 
-🌐 **النسخة المنشورة / Live Site:** https://english-hub.sites.tab.bot/
+🌐 **تطبيق الويب / Live Web App:** https://english-hub.sites.tab.bot/  
+⬇️ **صفحة التحميل / Download Page:** https://english-hub-download.sites.tab.bot/
+
+---
+
+## ⬇️ روابط التحميل الدائمة | Permanent Download Links (Latest Release)
+
+الروابط التالية تشير دائماً إلى آخر إصدار مبني تلقائياً:
+
+| المنصة / Platform | الملف / Asset | الرابط الدائم / Direct Link |
+|---|---|---|
+| 🤖 **Android (APK)** | `EnglishHub.apk` | https://github.com/Reosuors/English-Hub/releases/latest/download/EnglishHub.apk |
+| 🪟 **Windows (x64 Installer)** | `EnglishHub-Setup.exe` | https://github.com/Reosuors/English-Hub/releases/latest/download/EnglishHub-Setup.exe |
+| 🍏 **macOS (Universal DMG)** | `EnglishHub.dmg` | https://github.com/Reosuors/English-Hub/releases/latest/download/EnglishHub.dmg |
+| 📦 **Web Source (52 files ZIP)** | `EnglishHub-Web.zip` | https://github.com/Reosuors/English-Hub/releases/latest/download/EnglishHub-Web.zip |
+| 🍎 **iPhone & iPad (PWA)** | Safari → Add to Home Screen | https://english-hub.sites.tab.bot/ |
 
 ---
 
 ## 📁 هيكل الملفات | File Layout
 
+جميع ملفات الموقع الـ 52 موجودة مباشرة في الجذر لتسهيل التعديل المباشر بدون أي خطوة بناء معقدة:
+
 ```
 .
-├── index.html              # الصفحة الرئيسية ونقطة دخول التطبيق / Main entry point
-├── manifest.json           # إعدادات تطبيق الويب (PWA) / Web App Manifest
-├── sw.js                   # Service Worker للعمل بدون إنترنت / Offline caching
-├── icon.svg                # أيقونة التطبيق المتجهة / Vector app icon
-├── css/
-│   └── styles.css          # جميع التنسيقات والثيمات / All styles & themes
-├── fonts/
-│   └── jakarta-latin.woff2 # خط Plus Jakarta Sans المحلي / Bundled webfont
-├── icons/                  # أيقونات iOS و Android و PWA / App icons (PNG)
-└── js/
-    ├── app.js              # الموجّه الرئيسي للتطبيق / Main router & app controller
-    ├── boot.js             # تحميل الثيم والتخطيط قبل الرسم / Early theme/layout boot
-    ├── store.js            # حفظ التقدّم محلياً (localStorage) / Local progress state
-    ├── theme.js            # تبديل الثيمات وحجم الخط / Theme & font-size controls
-    ├── ui.js               # مكوّنات الواجهة المساعدة / Shared UI components
-    ├── badges.js           # الشارات والإنجازات / Badges & achievements
-    ├── groups.js           # تصنيف الأقسام والمجموعات / Section grouping
-    ├── helper.js           # المساعد اللغوي / Study helper
-    ├── icons.js            # أيقونات SVG المضمّنة / Inline SVG icons
-    ├── layoutpicker.js     # اختيار تخطيط الصفحة الرئيسية / Home layout picker
-    ├── lt.js               # فحص اللغة / Language checker integration
-    ├── pages/              # صفحات التطبيق (home, learn, basics, grammar, vocab, spelling, reading, writing, listening, speaking, idioms, mistakes, reallife, placement, progress, profile, settings, welcome)
-    └── data/               # محتوى الدروس والتمارين (basics, grammar, vocab, spelling, reading, writing, listening, speaking, idioms, mistakes, reallife, placement)
+├── index.html                   # الصفحة الرئيسية ونقطة دخول التطبيق / Main app entry
+├── download.html                # صفحة التحميل لجميع الأجهزة / Multi-platform download page
+├── manifest.json                # إعدادات تطبيق الويب (PWA) / Web App Manifest
+├── sw.js                        # Service Worker للعمل بدون إنترنت / Offline cache
+├── icon.svg                     # أيقونة التطبيق المتجهة / Vector icon
+├── css/styles.css               # جميع التنسيقات والثيمات / Styles & themes
+├── fonts/jakarta-latin.woff2    # خط Plus Jakarta Sans المحلي / Bundled webfont
+├── icons/                       # أيقونات iOS و Android و Desktop / PNG icons
+├── js/                          # منطق التطبيق وصفحاته ودروسه (pages/, data/)
+├── package.json                 # سكربت تجهيز ملفات الويب (npm run build)
+├── capacitor.config.json        # إعدادات تطبيق أندرويد (Capacitor)
+├── electron/                    # إعدادات تطبيق سطح المكتب (Windows & macOS)
+│   ├── main.js
+│   ├── package.json
+│   └── electron-builder.json
+├── scripts/
+│   ├── stage-web.mjs            # نسخ ملفات الويب الـ 52 فقط إلى www/
+│   ├── configure-android.py     # إعداد التوقيع ورقم الإصدار لأندرويد في CI
+│   └── publish-release.sh       # نشر الملفات تلقائياً على GitHub Releases
+└── .github/workflows/
+    ├── build-app.yml            # بناء Android APK + EnglishHub-Web.zip
+    └── build-desktop.yml        # بناء Windows .exe + macOS .dmg
 ```
 
 ---
 
 ## 🛠️ التعديل والتشغيل محلياً | Local Editing & Preview
 
-لا يحتاج المشروع إلى `npm install` أو أي أداة بناء. لتعديل أي درس أو تصميم:
-1. عدّل الملفات مباشرة (مثلاً الدروس داخل `js/data/`، الصفحات داخل `js/pages/`، أو الألوان والتنسيق داخل `css/styles.css`).
-2. شغّل خادماً محلياً في مجلد المشروع (مطلوب لأن التطبيق يستخدم ES Modules و Service Worker):
-
-No build tools or dependencies required. Edit any file directly and run a local static server from the repository root:
+لا يحتاج تعديل الموقع لأي تثبيت معقّد:
+1. عدّل الملفات مباشرة (`js/data/` للدروس، `js/pages/` للصفحات، `css/styles.css` للتصميم).
+2. شغّل خادماً محلياً من مجلد المشروع:
 
 ```bash
-# باستخدام Python / Using Python 3
 python3 -m http.server 8080
-
-# أو باستخدام Node.js / Or using Node.js
+# أو / or
 npx serve .
 ```
 
-ثم افتح `http://localhost:8080` في المتصفح.  
-*(ملاحظة: عند تعديل الملفات، يمكنك تحديث اسم الكاش داخل `sw.js` لضمان تحميل التحديثات الجديدة لدى المستخدمين فوراً).*
+3. عند الدفع إلى الفرع `main`، تقوم **GitHub Actions** تلقائياً ببناء ونشر إصدار جديد (`v1.0.<run_number>`) يشمل أندرويد وويندوز وماك وملف الويب المضغوط.
 
 ---
 
-## 🚀 النشر | Deployment
+## 🔐 النشر على Google Play (إضافة مفتاح التوقيع لاحقاً) | Release Signing for Google Play
 
-### GitHub Pages
-1. افتح **Settings → Pages** في هذا المستودع.
-2. تحت **Build and deployment**، اختر **Deploy from a branch**.
-3. اختر الفرع **`main`** والمجلد **`/ (root)`** ثم اضغط **Save**.
-4. خلال دقيقة سيصبح الموقع متاحاً على `https://reosuors.github.io/English-Hub/`.
+لأسباب أمنية، لا يتم وضع أي مفتاح توقيع خاص (`*.jks` / `*.keystore`) داخل هذا المستودع العام. حالياً يقوم البناء التلقائي بتوقيع ملف `EnglishHub.apk` بمفتاح مؤقت (ephemeral keystore) مناسب للتثبيت المباشر على أندرويد.
 
-### Vercel
-1. افتح [vercel.com/new](https://vercel.com/new) واستورد مستودع `Reosuors/English-Hub`.
-2. اترك إعدادات البناء فارغة (**Framework Preset: Other**، **Build Command:** فارغ، **Output Directory:** `.`).
-3. اضغط **Deploy** — وسيتم نشر أي تعديل جديد على `main` تلقائياً.
+إذا رغبت لاحقاً بنشر **English Hub** على **Google Play** أو الحفاظ على توقيع ثابت للتحديثات فوق النسخ السابقة:
+1. أنشئ مفتاح توقيع محلياً على جهازك:
+   ```bash
+   keytool -genkeypair -v -keystore englishhub-release.jks -alias englishhub -keyalg RSA -keysize 2048 -validity 10000
+   ```
+2. حوّله إلى Base64:
+   ```bash
+   base64 -w 0 englishhub-release.jks
+   ```
+3. أضف المتغيرات التالية في **Settings → Secrets and variables → Actions → New repository secret**:
+   - `KEYSTORE_BASE64`: محتوى الملف بترميز Base64
+   - `KEYSTORE_PASSWORD`: كلمة مرور الـ Keystore
+   - `KEY_ALIAS`: اسم المفتاح (مثلاً `englishhub`)
+   - `KEY_PASSWORD`: كلمة مرور المفتاح
+4. في البناء التالي سيستخدم الـ Workflow مفتاحك الخاص تلقائياً بدون أي تعديل إضافي.
