@@ -1,0 +1,127 @@
+name: Build Android App & Web ZIP
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'electron/**'
+      - '.github/workflows/build-desktop.yml'
+      - '**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    - name: Stage Web Assets & Package Web Source ZIP
+      run: |
+        npm run build
+        mkdir -p release
+        (cd www && zip -r ../release/EnglishHub-Web.zip .)
+        ls -lh release/EnglishHub-Web.zip
+        unzip -l release/EnglishHub-Web.zip | tail -n 5
+
+    - name: Install Capacitor Dependencies
+      run: |
+        npm install --no-save @capacitor/core@8.5.1 @capacitor/cli@8.5.1 @capacitor/android@8.5.1 @capacitor/assets@3.0.5
+
+    - name: Initialize Android Project & Generate App Icons
+      run: |
+        npx cap add android
+        mkdir -p assets resources
+        cp icons/icon-512.png assets/logo.png
+        cp icons/icon-512.png assets/icon-only.png
+        cp icons/icon-512.png resources/icon.png
+        npx @capacitor/assets generate --android --iconBackgroundColor '#111113' || true
+        npx cap sync android
+
+    - name: Setup Java JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
+    - name: Configure Signing Keystore (Release Secret or Ephemeral)
+      env:
+        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        SECRET_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        SECRET_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        SECRET_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      run: |
+        if [ -n "$KEYSTORE_BASE64" ]; then
+          echo "Using release keystore from GitHub secrets"
+          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          test -s "$RUNNER_TEMP/release.jks"
+          echo "KEYSTORE_FILE=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+          echo "KEYSTORE_PASSWORD=$SECRET_KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
+          echo "KEY_ALIAS=$SECRET_KEY_ALIAS" >> "$GITHUB_ENV"
+          echo "KEY_PASSWORD=$SECRET_KEY_PASSWORD" >> "$GITHUB_ENV"
+        else
+          echo "No KEYSTORE_BASE64 secret set — generating ephemeral signing keystore for APK"
+          PASS="ephemeral-$(openssl rand -hex 12)"
+          keytool -genkeypair -v -keystore "$RUNNER_TEMP/ephemeral.jks" \
+            -alias englishhub -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass "$PASS" -keypass "$PASS" \
+            -dname "CN=English Hub, OU=App, O=EnglishHub, L=London, C=GB"
+          echo "KEYSTORE_FILE=$RUNNER_TEMP/ephemeral.jks" >> "$GITHUB_ENV"
+          echo "KEYSTORE_PASSWORD=$PASS" >> "$GITHUB_ENV"
+          echo "KEY_ALIAS=englishhub" >> "$GITHUB_ENV"
+          echo "KEY_PASSWORD=$PASS" >> "$GITHUB_ENV"
+        fi
+
+    - name: Configure Gradle Release Signing & Version
+      run: python3 scripts/configure-android.py
+
+    - name: Build Signed Android APK
+      env:
+        VERSION_CODE: ${{ github.run_number }}
+        VERSION_NAME: 1.0.${{ github.run_number }}
+      run: |
+        cd android
+        chmod +x gradlew
+        ./gradlew assembleRelease
+        cp app/build/outputs/apk/release/app-release.apk ../release/EnglishHub.apk
+        ls -lh ../release/EnglishHub.apk
+
+    - name: Upload Android APK & Web ZIP Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-and-web
+        path: |
+          release/EnglishHub.apk
+          release/EnglishHub-Web.zip
+
+    - name: Publish Android APK to GitHub Release
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: bash scripts/publish-release.sh "1.0.${{ github.run_number }}" release/EnglishHub.apk EnglishHub.apk
+
+    - name: Publish Web Source ZIP to GitHub Release
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: bash scripts/publish-release.sh "1.0.${{ github.run_number }}" release/EnglishHub-Web.zip EnglishHub-Web.zip
+
+    - name: Verify APK Signature & Cleanup Keystore
+      if: always()
+      run: |
+        if [ -f release/EnglishHub.apk ]; then
+          BT=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -1)
+          "$BT/apksigner" verify --verbose --print-certs release/EnglishHub.apk | grep -v "^WARNING" | head -n 15
+          "$BT/aapt2" dump badging release/EnglishHub.apk | grep -E "^package|sdkVersion|targetSdkVersion"
+        fi
+        rm -f "$RUNNER_TEMP/release.jks" "$RUNNER_TEMP/ephemeral.jks"
