@@ -1,0 +1,12 @@
+node_modules/
+www/
+android/
+assets/
+resources/
+desktop-app/
+release/
+out/
+dist/
+*.jks
+*.keystore
+.DS_Store
