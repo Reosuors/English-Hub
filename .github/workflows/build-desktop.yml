@@ -1,0 +1,108 @@
+name: Build Desktop App (Windows + macOS)
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            out: out/EnglishHub_Setup.exe
+            asset: EnglishHub-Setup.exe
+          - os: macos-latest
+            out: out/EnglishHub.dmg
+            asset: EnglishHub.dmg
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    - name: Sync version number with Android build of this commit
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        N=""
+        for i in 1 2 3 4 5 6; do
+          N=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/build-app.yml/runs?head_sha=${GITHUB_SHA}&per_page=1" --jq '.workflow_runs[0].run_number // empty' 2>/dev/null || true)
+          [ -n "$N" ] && break
+          sleep 5
+        done
+        if [ -n "$N" ]; then
+          V="1.0.$N"
+        else
+          V=$(gh release view --repo "${GITHUB_REPOSITORY}" --json tagName -q .tagName 2>/dev/null | sed 's/^v//')
+          [ -n "$V" ] || V="1.0.${{ github.run_number }}"
+        fi
+        echo "APP_VERSION=$V" >> "$GITHUB_ENV"
+        echo "Resolved APP_VERSION=$V"
+
+    - name: Stage Web Assets
+      shell: bash
+      run: npm run build
+
+    - name: Stage Desktop App (Web files + Electron shell)
+      shell: bash
+      run: |
+        mkdir -p desktop-app/electron
+        cp -r www desktop-app/www
+        cp electron/main.js desktop-app/electron/main.js
+        cp electron/electron-builder.json desktop-app/electron/electron-builder.json
+        cp icons/icon-512.png desktop-app/electron/icon.png
+        cd desktop-app
+        node -e "require('fs').writeFileSync('package.json', JSON.stringify({name:'english-hub', productName:'English Hub', version:process.env.APP_VERSION, description:'English Hub — Interactive British English learning app', author:'Ahmad', main:'electron/main.js', private:true}, null, 2))"
+        npm install --save-dev electron@33 electron-builder@25
+
+    - name: Build Windows Installer (unsigned)
+      if: runner.os == 'Windows'
+      shell: bash
+      env:
+        CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      run: |
+        cd desktop-app
+        npx electron-builder --win --config electron/electron-builder.json --publish never
+        ls -la out
+
+    - name: Build macOS Universal App, Ad-hoc Sign, and Package DMG
+      if: runner.os == 'macOS'
+      shell: bash
+      env:
+        CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      run: |
+        cd desktop-app
+        npx electron-builder --mac dir --universal --config electron/electron-builder.json --publish never
+        APP="out/mac-universal/English Hub.app"
+        test -d "$APP"
+        codesign --force --deep --sign - "$APP"
+        codesign --verify --deep --strict --verbose=2 "$APP"
+        npx electron-builder --mac dmg --universal --prepackaged "$APP" --config electron/electron-builder.json --publish never
+        ls -la out
+
+    - name: Upload Desktop Installer Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: desktop-${{ runner.os }}
+        path: desktop-app/${{ matrix.out }}
+
+    - name: Publish Installer to GitHub Release
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: bash scripts/publish-release.sh "$APP_VERSION" "desktop-app/${{ matrix.out }}" "${{ matrix.asset }}"
