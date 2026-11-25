@@ -1,36 +1,1405 @@
 <!doctype html>
-<html lang="en-GB" data-theme="dark" data-tone="dark" data-layout="classic" data-size="m">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>English Learning Hub</title>
-<meta name="description" content="Learn English step by step: grammar, words, spelling and a level test (Entry 1 to Level 2). British English. Free, simple and clear." />
-<meta name="theme-color" content="#111113" />
-<meta property="og:title" content="English Learning Hub" />
-<meta property="og:description" content="Learn English step by step: grammar, words, spelling, writing, reading, listening and real-life English. Entry 1 to Level 2." />
-<meta property="og:image" content="https://english-hub.sites.tab.bot/og.png" />
-<meta property="og:type" content="website" />
-<link rel="icon" href="icon.svg" type="image/svg+xml" />
-<link rel="manifest" href="manifest.json" />
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-title" content="English Hub" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<link rel="preload" href="fonts/jakarta-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="css/styles.css" />
-<script src="js/boot.js"></script>
-<script type="module" src="js/app.js"></script>
-<script>if ("serviceWorker" in navigator) window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
-window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); window.__installPrompt = e; document.dispatchEvent(new Event("elh-installable")); });</script>
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Bright English Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#eef6f4; --ink:#12312e; --ink2:#3d5a56; --muted:#6b857f;
+  --teal:#0e7c6f; --teal-d:#0a5f55; --coral:#e4572e; --amber:#e9a13b; --sky:#2e7fb8;
+  --glass:rgba(255,255,255,.58); --glass2:rgba(255,255,255,.38); --glass-brd:rgba(255,255,255,.75);
+  --card-shadow:0 10px 30px rgba(18,49,46,.10), inset 0 1px 0 rgba(255,255,255,.8);
+  --btn-shadow:0 6px 16px rgba(14,124,111,.28);
+  --field:rgba(255,255,255,.75);
+  --good:#1c7c43; --bad:#c0392b;
+  --dock:rgba(255,255,255,.66);
+  --radius:20px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0c1a18; --ink:#e8f3f0; --ink2:#b9d2cc; --muted:#8fa8a2;
+    --teal:#2fbfa9; --teal-d:#7fe0cf; --coral:#ff8a5f; --amber:#f2b95e; --sky:#6db9e8;
+    --glass:rgba(20,38,35,.55); --glass2:rgba(20,38,35,.35); --glass-brd:rgba(255,255,255,.14);
+    --card-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);
+    --btn-shadow:0 6px 16px rgba(0,0,0,.4);
+    --field:rgba(255,255,255,.08);
+    --good:#5fd68a; --bad:#ff8a7a;
+    --dock:rgba(14,28,26,.68);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:"Outfit",system-ui,sans-serif; color:var(--ink);
+  background:var(--bg); min-height:100vh; -webkit-font-smoothing:antialiased;
+}
+.bgfx{position:fixed; inset:0; z-index:-1; overflow:hidden; background:
+  linear-gradient(160deg, var(--bg) 0%, transparent 100%);}
+.blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:.55; animation:drift 26s ease-in-out infinite alternate;}
+.blob.b1{width:480px;height:480px;background:#7fd8c8;top:-140px;left:-120px}
+.blob.b2{width:420px;height:420px;background:#f6c177;top:20%;right:-160px;animation-delay:-8s}
+.blob.b3{width:380px;height:380px;background:#f1947f;bottom:-140px;left:30%;animation-delay:-16s}
+.blob.b4{width:260px;height:260px;background:#8fc7e8;top:55%;left:-100px;animation-delay:-4s}
+@media (prefers-color-scheme: dark){.blob{opacity:.28}}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,36px) scale(1.12)}}
+@media (prefers-reduced-motion: reduce){.blob{animation:none} *{transition:none!important; animation:none!important}}
+h1,h2,h3{font-family:"Lora",Georgia,serif; font-weight:600; line-height:1.15; margin:0}
+button,[role="button"],select,summary,input:not([type="checkbox"],[type="radio"]),textarea{font-family:inherit}
+button{cursor:pointer}
+.glass{
+  background:var(--glass); border:1px solid var(--glass-brd); border-radius:var(--radius);
+  backdrop-filter:blur(18px) saturate(1.5); -webkit-backdrop-filter:blur(18px) saturate(1.5);
+  box-shadow:var(--card-shadow);
+}
+.press{transition:transform .15s ease, box-shadow .15s ease, background .15s ease}
+.press:hover{transform:translateY(-2px)}
+.press:active{transform:translateY(1px) scale(.97)}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  border:1px solid var(--glass-brd); border-radius:14px; padding:.65rem 1.1rem;
+  background:var(--glass); color:var(--ink); font-weight:600; font-size:.95rem;
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  box-shadow:var(--card-shadow); min-height:44px; text-decoration:none;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{transform:translateY(-2px)} .btn:active{transform:translateY(1px) scale(.96)}
+.btn.primary{background:linear-gradient(135deg,var(--teal),var(--teal-d)); color:#fff; border-color:transparent; box-shadow:var(--btn-shadow); position:relative; overflow:hidden}
+.btn.primary::after{content:""; position:absolute; top:0; left:-80%; width:50%; height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-20deg); transition:left .6s ease}
+.btn.primary:hover::after{left:130%}
+.btn.coral{background:linear-gradient(135deg,var(--coral),#c7431f); color:#fff; border-color:transparent}
+.btn.small{padding:.4rem .8rem; min-height:38px; font-size:.85rem; border-radius:11px}
+.btn:disabled{opacity:.5; pointer-events:none}
+.chip{display:inline-flex; align-items:center; gap:.35rem; padding:.32rem .75rem; border-radius:999px;
+  background:var(--glass2); border:1px solid var(--glass-brd); font-size:.82rem; font-weight:600; color:var(--ink2);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px)}
+input[type="text"],input[type="search"],textarea,select{
+  width:100%; padding:.7rem .9rem; border-radius:13px; border:1px solid var(--glass-brd);
+  background:var(--field); color:var(--ink); font-size:1rem; min-height:44px;
+}
+textarea{resize:vertical}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--teal); outline-offset:1px}
+svg.ic{width:22px;height:22px;flex:none}
+.ic path,.ic circle,.ic rect,.ic line{stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+.ic .fill{fill:currentColor; stroke:none}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1180px; margin:0 auto; padding:1rem 1rem 7.5rem}
+.sidebar{display:none}
+main{min-width:0}
+.view{display:none; animation:fadein .35s ease}
+.view.on{display:block}
+@keyframes fadein{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:none}}
+@media (min-width:960px){
+  .layout{display:grid; grid-template-columns:250px 1fr; gap:1.4rem; max-width:1180px; margin:0 auto; padding:1.2rem 1rem 3rem}
+  .wrap{max-width:none; margin:0; padding:0}
+  .sidebar{display:block; position:sticky; top:1.2rem; height:fit-content; padding:1.1rem .9rem}
+  .sidebar .brand{font-family:"Lora",serif; font-size:1.3rem; font-weight:600; padding:.2rem .6rem .9rem}
+  .sidebar .brand span{color:var(--teal)}
+  .snav{display:flex; flex-direction:column; gap:.3rem}
+  .snav button{display:flex; align-items:center; gap:.7rem; padding:.65rem .7rem; border-radius:12px; border:1px solid transparent;
+    background:transparent; color:var(--ink2); font-size:.98rem; font-weight:600; text-align:left; min-height:44px;
+    transition:all .15s ease}
+  .snav button:hover{background:var(--glass2); color:var(--ink)}
+  .snav button:active{transform:scale(.97)}
+  .snav button.act{background:var(--glass); border-color:var(--glass-brd); color:var(--teal-d); box-shadow:var(--card-shadow)}
+  .side-stats{margin-top:1rem; padding:.8rem; display:flex; gap:.5rem; flex-wrap:wrap}
+}
+
+/* ---------- home ---------- */
+.hero{padding:1.4rem; margin-bottom:1rem; position:relative; overflow:hidden}
+.hero h1{font-size:clamp(1.7rem,5vw,2.5rem)}
+.hero p{color:var(--ink2); margin:.5rem 0 0; max-width:52ch}
+.statrow{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1rem}
+.ring{width:64px;height:64px;flex:none}
+.ring circle{fill:none; stroke-width:7}
+.ring .track{stroke:rgba(14,124,111,.22)}
+.ring .prog{stroke:var(--teal); stroke-linecap:round; transform:rotate(-90deg); transform-origin:center; transition:stroke-dashoffset .6s ease}
+.goalrow{display:flex; gap:1rem; align-items:center}
+.grid{display:grid; gap:1rem}
+.grid.c2{grid-template-columns:1fr}
+@media(min-width:700px){.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:repeat(3,1fr)}}
+.card{padding:1.15rem}
+.card h3{font-size:1.15rem; margin-bottom:.35rem}
+.card p{color:var(--ink2); margin:.25rem 0; font-size:.95rem}
+.seccard{text-align:left; width:100%; padding:1.15rem; display:flex; gap:.9rem; align-items:flex-start; color:var(--ink)}
+.seccard .sic{width:46px;height:46px;flex:none;border-radius:13px;display:grid;place-items:center;color:#fff}
+.seccard h3{font-size:1.08rem}
+.seccard p{margin:.2rem 0 0; color:var(--ink2); font-size:.88rem}
+.seccard .cnt{margin-left:auto; font-weight:700; color:var(--teal-d); font-size:.85rem; white-space:nowrap}
+
+/* mic hero */
+.mic-hero{padding:1.5rem 1.2rem; text-align:center; margin-bottom:1rem; position:relative; overflow:hidden}
+.bigmic{
+  width:104px;height:104px;border-radius:50%;border:none;margin:.6rem auto; display:grid; place-items:center;
+  background:linear-gradient(145deg,#f0562f,#c93a17); color:#fff; cursor:pointer;
+  box-shadow:0 14px 30px rgba(228,87,46,.4), inset 0 2px 0 rgba(255,255,255,.35);
+  transition:transform .15s ease; position:relative;
+}
+.bigmic svg{width:44px;height:44px}
+.bigmic:hover{transform:scale(1.05)} .bigmic:active{transform:scale(.94)}
+.bigmic.listening{animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(228,87,46,.45),0 14px 30px rgba(228,87,46,.4)}50%{box-shadow:0 0 0 22px rgba(228,87,46,0),0 14px 30px rgba(228,87,46,.4)}}
+.miclabel{font-weight:800; letter-spacing:.14em; font-size:.8rem; color:var(--coral)}
+
+/* lists & lessons */
+.itemrow{display:flex; align-items:center; gap:.8rem; width:100%; text-align:left; padding:.85rem 1rem; color:var(--ink); margin-bottom:.55rem}
+.itemrow .t{font-weight:600}
+.itemrow .s{font-size:.85rem; color:var(--muted)}
+.itemrow .done{margin-left:auto; color:var(--good); font-weight:700; font-size:.85rem; white-space:nowrap}
+.itemrow .chev{margin-left:auto; color:var(--muted)}
+.lvl{font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:.18rem .55rem; border-radius:999px; background:var(--glass2); border:1px solid var(--glass-brd); color:var(--ink2); white-space:nowrap}
+.prose{line-height:1.65; font-size:1.02rem}
+.prose li{margin:.3rem 0}
+.exbox{padding:.9rem 1rem; border-radius:14px; background:var(--glass2); border:1px solid var(--glass-brd); margin:.7rem 0}
+.exbox p{margin:.3rem 0}
+.qbox{padding:1rem; margin-top:1rem}
+.opt{display:block; width:100%; text-align:left; padding:.75rem .95rem; margin:.45rem 0; border-radius:12px;
+  border:1px solid var(--glass-brd); background:var(--field); color:var(--ink); font-size:1rem; min-height:48px;
+  transition:all .15s ease}
+.opt:hover{transform:translateX(3px)} .opt:active{transform:scale(.98)}
+.opt.right{border-color:var(--good); background:rgba(28,124,67,.14); font-weight:700}
+.opt.wrong{border-color:var(--bad); background:rgba(192,57,43,.12)}
+.feedback{margin-top:.6rem; padding:.7rem .9rem; border-radius:12px; font-size:.95rem; display:none}
+.feedback.show{display:block}
+.feedback.ok{background:rgba(28,124,67,.13)} .feedback.no{background:rgba(192,57,43,.1)}
+.wordgrid{display:grid; gap:.7rem; grid-template-columns:1fr}
+@media(min-width:640px){.wordgrid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.wordgrid{grid-template-columns:1fr 1fr 1fr}}
+.wordcard{padding:1rem}
+.wordcard .w{font-family:"Lora",serif; font-size:1.3rem; font-weight:600}
+.wordcard .pos{color:var(--teal-d); font-weight:700; font-size:.8rem; text-transform:uppercase; letter-spacing:.05em}
+.wordcard .def{color:var(--ink2); margin:.3rem 0}
+.wordcard .ex{font-style:italic; color:var(--muted); font-size:.92rem}
+.iconbtn{width:40px;height:40px;border-radius:11px;border:1px solid var(--glass-brd);background:var(--glass2);color:var(--teal-d);
+  display:inline-grid;place-items:center; transition:transform .15s}
+.iconbtn:active{transform:scale(.9)}
+.iconbtn svg{width:20px;height:20px}
+.flash{min-height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:1.5rem; cursor:pointer}
+.flash .fw{font-family:"Lora",serif; font-size:2rem; font-weight:600}
+.bar{height:10px; border-radius:99px; background:var(--glass2); border:1px solid var(--glass-brd); overflow:hidden}
+.bar i{display:block; height:100%; background:linear-gradient(90deg,var(--teal),var(--amber)); border-radius:99px; transition:width .6s ease}
+.chatlog{display:flex; flex-direction:column; gap:.6rem; max-height:46vh; overflow-y:auto; padding:.4rem .1rem}
+.msg{max-width:85%; padding:.65rem .9rem; border-radius:16px; line-height:1.5; font-size:.98rem}
+.msg.tutor{align-self:flex-start; background:var(--glass); border:1px solid var(--glass-brd); border-bottom-left-radius:5px}
+.msg.me{align-self:flex-end; background:linear-gradient(135deg,var(--teal),var(--teal-d)); color:#fff; border-bottom-right-radius:5px}
+.tabs{display:flex; gap:.45rem; flex-wrap:wrap; margin-bottom:1rem}
+.tabs button{padding:.55rem .95rem; border-radius:999px; border:1px solid var(--glass-brd); background:var(--glass2);
+  color:var(--ink2); font-weight:600; min-height:42px; transition:all .15s}
+.tabs button:active{transform:scale(.95)}
+.tabs button.act{background:linear-gradient(135deg,var(--teal),var(--teal-d)); color:#fff; border-color:transparent; box-shadow:var(--btn-shadow)}
+.toast{position:fixed; left:50%; bottom:6.6rem; transform:translate(-50%,20px); opacity:0; pointer-events:none;
+  background:var(--ink); color:var(--bg); padding:.65rem 1.1rem; border-radius:999px; font-weight:600; z-index:90;
+  transition:all .3s ease; box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.toast.show{opacity:1; transform:translate(-50%,0)}
+.backrow{margin-bottom:.9rem}
+.hidden{display:none!important}
+.small{font-size:.88rem; color:var(--muted)}
+.kbd-note{font-size:.85rem; color:var(--muted); margin-top:.5rem}
+
+/* ---------- bottom dock ---------- */
+.dock{
+  position:fixed; left:50%; transform:translateX(-50%); bottom:calc(.7rem + env(safe-area-inset-bottom));
+  width:min(430px, calc(100vw - 1.4rem)); z-index:60;
+  display:grid; grid-template-columns:1fr 1fr 76px 1fr 1fr; align-items:end;
+  padding:.5rem .6rem calc(.5rem); border-radius:26px;
+  background:var(--dock); border:1px solid var(--glass-brd);
+  backdrop-filter:blur(22px) saturate(1.6); -webkit-backdrop-filter:blur(22px) saturate(1.6);
+  box-shadow:0 16px 40px rgba(10,40,36,.22), inset 0 1px 0 rgba(255,255,255,.6);
+}
+@media(min-width:960px){.dock{display:none}}
+.dock button{background:none; border:none; color:var(--muted); display:flex; flex-direction:column; align-items:center; gap:2px;
+  font-size:.68rem; font-weight:600; padding:.45rem 0 .2rem; border-radius:14px; min-height:52px; transition:all .15s}
+.dock button:active{transform:scale(.9)}
+.dock button.act{color:var(--teal-d)}
+.dock button.act svg{transform:translateY(-1px)}
+.dock .dockmic{
+  width:64px; height:64px; border-radius:50%; margin:-26px auto 0; padding:0; justify-self:center;
+  background:linear-gradient(145deg,#f0562f,#c93a17); color:#fff; display:grid; place-items:center;
+  box-shadow:0 12px 26px rgba(228,87,46,.45), inset 0 2px 0 rgba(255,255,255,.35); border:3px solid rgba(255,255,255,.65);
+  transition:transform .15s;
+}
+.dock .dockmic:active{transform:scale(.9)}
+.dock .dockmic svg{width:28px;height:28px}
+.dock .dockmic.listening{animation:pulse 1.2s infinite}
+
+/* sheet */
+.sheetwrap{position:fixed; inset:0; z-index:70; display:none}
+.sheetwrap.open{display:block}
+.sheetbg{position:absolute; inset:0; background:rgba(10,30,27,.35); backdrop-filter:blur(3px)}
+.sheet{position:absolute; left:0; right:0; bottom:0; border-radius:26px 26px 0 0; padding:1.1rem 1.1rem calc(1.4rem + env(safe-area-inset-bottom));
+  animation:up .3s ease}
+@keyframes up{from{transform:translateY(40px); opacity:0}to{transform:none; opacity:1}}
+.sheet .grab{width:44px;height:5px;border-radius:99px;background:var(--muted);opacity:.5;margin:0 auto .9rem}
+.sheetgrid{display:grid; grid-template-columns:1fr 1fr; gap:.7rem}
+.sheetgrid button{display:flex; align-items:center; gap:.7rem; padding:.9rem; border-radius:15px; text-align:left;
+  border:1px solid var(--glass-brd); background:var(--glass2); color:var(--ink); font-weight:600; font-size:1rem; min-height:56px}
+.sheetgrid button:active{transform:scale(.96)}
+
+/* modal (AI tutor full screen on mobile) */
+.modal{position:fixed; inset:0; z-index:80; display:none; padding:.8rem}
+.modal.open{display:block}
+.modal .mbox{height:100%; max-width:760px; margin:0 auto; padding:1.1rem; overflow-y:auto; border-radius:24px; animation:fadein .3s ease}
+.modal .mhead{display:flex; align-items:center; gap:.7rem; margin-bottom:.9rem}
+.modal .mhead h2{font-size:1.35rem}
+.xbtn{margin-left:auto}
+.result-box{padding:1rem; margin-top:.9rem}
+.result-box:empty{display:none}
+.corr{background:rgba(28,124,67,.12); border-radius:10px; padding:.55rem .8rem; margin:.4rem 0}
+footer.foot{padding:1.5rem 0 .5rem; text-align:center}
+</style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<div class="app">
-  <aside id="sidebar" class="sidebar" aria-label="Sidebar"></aside>
-  <main id="main" tabindex="-1"><div id="view" class="view"><div class="boot"><span class="logo big">Aa</span><p>Loading…</p></div></div></main>
+<div class="bgfx" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+
+<div class="layout">
+  <aside class="sidebar glass">
+    <div class="brand">Bright <span>English Hub</span></div>
+    <nav class="snav" id="snav"></nav>
+    <div class="side-stats glass">
+      <span class="chip" id="side-xp">⭐ 0 XP</span>
+      <span class="chip" id="side-streak">🔥 0 day streak</span>
+    </div>
+    <div style="padding:.9rem .6rem 0">
+      <button class="btn coral" style="width:100%" onclick="openTutor('speak')">🎙 Speak to AI Tutor</button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="wrap">
+
+      <!-- HOME -->
+      <section class="view" id="view-home">
+        <div class="hero glass">
+          <span class="chip">British English · en-GB</span>
+          <h1 id="greeting">Good day! Ready to learn?</h1>
+          <p>Short lessons, real practice and an AI tutor who listens, answers out loud in a British voice, and helps you fix your English as you go.</p>
+          <div class="statrow">
+            <span class="chip" id="chip-xp">⭐ 0 XP</span>
+            <span class="chip" id="chip-streak">🔥 0 day streak</span>
+            <span class="chip" id="chip-level">Level: Start the placement test</span>
+          </div>
+          <div class="goalrow" style="margin-top:1.1rem">
+            <svg class="ring" viewBox="0 0 64 64" aria-hidden="true">
+              <circle class="track" cx="32" cy="32" r="26"></circle>
+              <circle class="prog" id="goal-ring" cx="32" cy="32" r="26" stroke-dasharray="163.3" stroke-dashoffset="163.3"></circle>
+            </svg>
+            <div>
+              <strong>Today's goal</strong>
+              <div class="small" id="goal-text">Earn 20 XP today. Every lesson, quiz and spoken answer counts.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mic-hero glass">
+          <div class="miclabel">AI SPEAKING</div>
+          <button class="bigmic" id="home-mic" aria-label="Tap to speak to the AI tutor">
+            <svg viewBox="0 0 24 24" class="ic"><rect x="9" y="3" width="6" height="11" rx="3" class="fill"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+          </button>
+          <h2 style="font-size:1.3rem">Tap, speak English, get an answer</h2>
+          <p class="small" style="max-width:46ch;margin:.4rem auto 0">The AI tutor replies in writing and reads it aloud in British English — with a quick correction of what you said.</p>
+          <div id="home-mic-result"></div>
+        </div>
+
+        <div class="grid c2">
+          <div class="card glass">
+            <h3>Continue learning</h3>
+            <p id="next-lesson-text">Start with your first lesson and build up step by step.</p>
+            <div style="margin-top:.8rem; display:flex; gap:.5rem; flex-wrap:wrap">
+              <button class="btn primary" id="next-lesson-btn">Next lesson →</button>
+              <button class="btn" onclick="showView('path')">My Path</button>
+            </div>
+          </div>
+          <div class="card glass">
+            <h3>Word of the day</h3>
+            <div id="wotd"></div>
+          </div>
+        </div>
+
+        <h2 style="margin:1.4rem 0 .8rem; font-size:1.35rem">All sections</h2>
+        <div class="grid c2" id="home-sections"></div>
+      </section>
+
+      <!-- PATH -->
+      <section class="view" id="view-path">
+        <h1 style="font-size:1.8rem; margin-bottom:.4rem">My Path</h1>
+        <p class="small" style="margin-bottom:1rem">From Pre-Entry to Level 2. Finish lessons in order, or jump to anything that interests you.</p>
+        <div id="path-list"></div>
+      </section>
+
+      <!-- LEARN -->
+      <section class="view" id="view-learn">
+        <h1 style="font-size:1.8rem; margin-bottom:.4rem">Learn</h1>
+        <p class="small" style="margin-bottom:1rem">Twelve sections covering everything: grammar, words, reading, listening, speaking, writing and real-life English.</p>
+        <input type="search" id="global-search" placeholder="Search lessons, words and idioms…" aria-label="Search lessons, words and idioms" />
+        <div id="search-results" style="margin-top:.8rem"></div>
+        <div class="grid c2" id="learn-sections" style="margin-top:1rem"></div>
+      </section>
+
+      <!-- SECTION -->
+      <section class="view" id="view-section">
+        <div class="backrow"><button class="btn small" onclick="showView('learn')">← All sections</button></div>
+        <h1 id="section-title" style="font-size:1.7rem"></h1>
+        <p class="small" id="section-sub" style="margin:.3rem 0 1rem"></p>
+        <div id="section-body"></div>
+      </section>
+
+      <!-- LESSON -->
+      <section class="view" id="view-lesson">
+        <div class="backrow"><button class="btn small" id="lesson-back">← Back</button></div>
+        <div class="card glass" id="lesson-body"></div>
+      </section>
+
+      <!-- WORDS -->
+      <section class="view" id="view-words">
+        <h1 style="font-size:1.8rem; margin-bottom:.4rem">Words</h1>
+        <p class="small" style="margin-bottom:1rem">135 useful British English words. Tap the speaker to hear each one, flip the flashcards, and use the Word Helper in the AI Tutor.</p>
+        <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem">
+          <button class="btn primary" onclick="startFlash()">Flashcards</button>
+          <button class="btn" onclick="openTutor('word')">Word Helper</button>
+          <input type="search" id="word-search" placeholder="Search words…" aria-label="Search words" style="flex:1; min-width:170px" />
+        </div>
+        <div id="flash-zone"></div>
+        <div class="wordgrid" id="word-grid"></div>
+      </section>
+
+      <!-- PRACTICE -->
+      <section class="view" id="view-practice">
+        <h1 style="font-size:1.8rem; margin-bottom:.4rem">Practice</h1>
+        <p class="small" style="margin-bottom:1rem">Speaking, listening, spelling and quick revision — short sessions that earn XP.</p>
+        <div class="mic-hero glass">
+          <div class="miclabel">PRONUNCIATION</div>
+          <button class="bigmic" id="prac-mic" aria-label="Practise speaking">
+            <svg viewBox="0 0 24 24" class="ic"><rect x="9" y="3" width="6" height="11" rx="3" class="fill"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+          </button>
+          <h2 style="font-size:1.25rem">Say this sentence</h2>
+          <p id="prac-sentence" style="font-family:Lora,serif; font-size:1.15rem; margin:.4rem 0"></p>
+          <button class="btn small" onclick="newSentence()">New sentence</button>
+          <button class="btn small" onclick="speakText(document.getElementById('prac-sentence').textContent)">🔊 Hear it first</button>
+          <div id="prac-result"></div>
+        </div>
+        <div class="grid c2">
+          <div class="card glass">
+            <h3>Quick revision</h3>
+            <p>Five flashcards from the words you have not mastered yet.</p>
+            <button class="btn primary" style="margin-top:.6rem" onclick="startFlash(); showView('words')">Revise now</button>
+          </div>
+          <div class="card glass">
+            <h3>Spelling pairs</h3>
+            <p>The 16 word pairs British learners mix up most — their/there, your/you're and more.</p>
+            <button class="btn primary" style="margin-top:.6rem" onclick="openSection('spelling')">Practise pairs</button>
+          </div>
+          <div class="card glass">
+            <h3>Listening gym</h3>
+            <p>Short British dialogues read aloud, with questions to check you caught everything.</p>
+            <button class="btn primary" style="margin-top:.6rem" onclick="openSection('listening')">Start listening</button>
+          </div>
+          <div class="card glass">
+            <h3>Chat practice</h3>
+            <p>Have a friendly back-and-forth chat with the AI tutor, typed or spoken.</p>
+            <button class="btn primary" style="margin-top:.6rem" onclick="openTutor('chat')">Start chatting</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROGRESS -->
+      <section class="view" id="view-progress">
+        <h1 style="font-size:1.8rem; margin-bottom:1rem">Your progress</h1>
+        <div id="progress-body"></div>
+      </section>
+
+      <!-- ME -->
+      <section class="view" id="view-me">
+        <h1 style="font-size:1.8rem; margin-bottom:1rem">Me</h1>
+        <div class="card glass" style="margin-bottom:1rem">
+          <h3>Your name</h3>
+          <p>Used only for your greeting on this device.</p>
+          <div style="display:flex; gap:.5rem; margin-top:.6rem; flex-wrap:wrap">
+            <input type="text" id="me-name" placeholder="Your first name" style="flex:1; min-width:160px" />
+            <button class="btn primary" onclick="saveName()">Save</button>
+          </div>
+        </div>
+        <div class="card glass" style="margin-bottom:1rem">
+          <h3>British voice</h3>
+          <p>The tutor speaks in en-GB. Make it slower while you are learning.</p>
+          <label class="small" for="voice-rate">Speaking speed</label>
+          <select id="voice-rate" onchange="saveRate()">
+            <option value="0.85">Slow and clear</option>
+            <option value="1">Natural</option>
+            <option value="1.1">Brisk</option>
+          </select>
+          <button class="btn" style="margin-top:.7rem" onclick="speakText('Hello! Welcome to Bright English Hub. Let us learn together.')">🔊 Test the voice</button>
+        </div>
+        <div class="card glass">
+          <h3>AI Tutor</h3>
+          <p>Ask questions, check your writing, look up words or just chat.</p>
+          <button class="btn coral" style="margin-top:.6rem" onclick="openTutor('speak')">Open AI Tutor</button>
+        </div>
+        <div class="card glass" style="margin-top:1rem">
+          <h3>Start again</h3>
+          <p>Clear all XP, streaks and finished lessons saved in this browser.</p>
+          <button class="btn" style="margin-top:.6rem" onclick="resetProgress()">Reset my progress</button>
+          <div id="reset-note"></div>
+        </div>
+        <footer class="foot small">Bright English Hub · British English (en-GB) · Progress is saved in this browser only.</footer>
+      </section>
+
+    </div>
+  </main>
 </div>
-<nav id="bottom-nav" class="bottom-nav" aria-label="Main"></nav>
-<noscript><p style="padding:24px;font-family:sans-serif">Please turn on JavaScript to use English Learning Hub.</p></noscript>
+
+<!-- bottom dock: 5 slots, raised AI mic in the middle -->
+<nav class="dock" aria-label="Main">
+  <button data-nav="home" onclick="showView('home')"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Home</button>
+  <button data-nav="path" onclick="showView('path')"><svg class="ic" viewBox="0 0 24 24"><path d="M5 19V6a2 2 0 0 1 2-2h13v13H7a2 2 0 0 0-2 2zm0 0a2 2 0 0 0 2 2h13"/></svg>My Path</button>
+  <button class="dockmic" id="dock-mic" aria-label="Speak to the AI tutor"><svg viewBox="0 0 24 24" class="ic"><rect x="9" y="3" width="6" height="11" rx="3" class="fill"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+  <button data-nav="learn" onclick="showView('learn')"><svg class="ic" viewBox="0 0 24 24"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg>Learn</button>
+  <button data-nav="more" onclick="openSheet()"><svg class="ic" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6" class="fill"/><circle cx="12" cy="12" r="1.6" class="fill"/><circle cx="19" cy="12" r="1.6" class="fill"/></svg>More</button>
+</nav>
+
+<!-- More sheet -->
+<div class="sheetwrap" id="sheet">
+  <div class="sheetbg" onclick="closeSheet()"></div>
+  <div class="sheet glass">
+    <div class="grab"></div>
+    <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1rem">
+      <span class="chip" id="sheet-xp">⭐ 0 XP</span>
+      <span class="chip" id="sheet-streak">🔥 0 day streak</span>
+      <button class="btn small coral" onclick="closeSheet(); openTutor('speak')">🎙 Speak to AI</button>
+    </div>
+    <div class="sheetgrid">
+      <button onclick="closeSheet(); showView('words')">🔤 Words</button>
+      <button onclick="closeSheet(); showView('practice')">🎯 Practice</button>
+      <button onclick="closeSheet(); showView('progress')">📈 Progress</button>
+      <button onclick="closeSheet(); showView('me')">👤 Me</button>
+      <button onclick="closeSheet(); openTutor('ask')">🤖 AI Tutor</button>
+      <button onclick="closeSheet(); openSection('placement')">🧭 Placement test</button>
+    </div>
+  </div>
+</div>
+
+<!-- AI Tutor modal -->
+<div class="modal" id="tutor">
+  <div class="mbox glass">
+    <div class="mhead">
+      <h2>AI Tutor</h2>
+      <span class="chip">British English</span>
+      <button class="btn small xbtn" onclick="closeTutor()">✕ Close</button>
+    </div>
+    <div class="tabs" id="tutor-tabs">
+      <button data-tab="speak" onclick="tutorTab('speak')">🎙 Speak</button>
+      <button data-tab="ask" onclick="tutorTab('ask')">❓ Ask a Question</button>
+      <button data-tab="write" onclick="tutorTab('write')">✍️ Check Writing</button>
+      <button data-tab="chat" onclick="tutorTab('chat')">💬 Chat Practice</button>
+      <button data-tab="word" onclick="tutorTab('word')">🔤 Word Helper</button>
+    </div>
+
+    <div class="tpanel" id="tp-speak">
+      <div style="text-align:center">
+        <button class="bigmic" id="tutor-mic" aria-label="Tap to speak">
+          <svg viewBox="0 0 24 24" class="ic"><rect x="9" y="3" width="6" height="11" rx="3" class="fill"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+        </button>
+        <div class="miclabel" id="mic-status">TAP TO SPEAK</div>
+        <p class="small">Speak in English. You will get a written reply, hear it in a British voice, and see a quick correction. No microphone? Type instead:</p>
+        <div style="display:flex; gap:.5rem; margin-top:.6rem">
+          <input type="text" id="speak-type" placeholder="Type what you want to say…" />
+          <button class="btn primary" onclick="typedSpeak()">Send</button>
+        </div>
+      </div>
+      <div class="result-box glass" id="speak-result"></div>
+    </div>
+
+    <div class="tpanel hidden" id="tp-ask">
+      <p class="small" style="margin-bottom:.6rem">Ask anything about English: “When do I use the present perfect?”, “What does ‘knackered’ mean?”, “Articles — a or the?”</p>
+      <div style="display:flex; gap:.5rem">
+        <input type="text" id="ask-input" placeholder="Type your question…" />
+        <button class="btn primary" onclick="askTutor()">Ask</button>
+      </div>
+      <div class="result-box glass" id="ask-result"></div>
+    </div>
+
+    <div class="tpanel hidden" id="tp-write">
+      <p class="small" style="margin-bottom:.6rem">Paste a sentence or a short paragraph. The tutor checks spelling, capital letters, punctuation and common mistakes, then shows a corrected version.</p>
+      <textarea id="write-input" rows="5" placeholder="Write in English here… e.g. i goes to the shop yesterday and buyed some bred"></textarea>
+      <button class="btn primary" style="margin-top:.6rem" onclick="checkWriting()">Check my writing</button>
+      <div class="result-box glass" id="write-result"></div>
+    </div>
+
+    <div class="tpanel hidden" id="tp-chat">
+      <div class="chatlog" id="chat-log"></div>
+      <div style="display:flex; gap:.5rem; margin-top:.7rem">
+        <input type="text" id="chat-input" placeholder="Chat in English…" />
+        <button class="btn" onclick="chatMic()" aria-label="Speak your message">🎙</button>
+        <button class="btn primary" onclick="chatSend()">Send</button>
+      </div>
+    </div>
+
+    <div class="tpanel hidden" id="tp-word">
+      <p class="small" style="margin-bottom:.6rem">Type any word or idiom and get its meaning, a British example, and similar words from the Hub.</p>
+      <div style="display:flex; gap:.5rem">
+        <input type="text" id="word-input" placeholder="e.g. brilliant, queue, break the ice" />
+        <button class="btn primary" onclick="wordHelp()">Look up</button>
+      </div>
+      <div class="result-box glass" id="word-result"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script>
+/* ================= DATA ================= */
+const LEVELS=["Pre-Entry","Entry 1","Entry 2","Entry 3","Level 1","Level 2"];
+const SECTIONS=[
+ {id:"first", name:"First Steps", icon:"👣", colour:"#2e7fb8", sub:"Sounds, letters, numbers and your very first words.", count:"6 topics"},
+ {id:"placement", name:"Placement Test", icon:"🧭", colour:"#7a4fa3", sub:"Ten quick questions to find your starting level.", count:"1 test"},
+ {id:"grammar", name:"Grammar", icon:"🧩", colour:"#0e7c6f", sub:"25 lessons from ‘I am’ to the passive voice.", count:"25 lessons"},
+ {id:"words", name:"Words", icon:"🔤", colour:"#e9a13b", sub:"135 everyday British words with examples.", count:"135 words"},
+ {id:"reading", name:"Reading", icon:"📖", colour:"#c2517d", sub:"Short British texts with questions.", count:"11 texts"},
+ {id:"listening", name:"Listening", icon:"🎧", colour:"#2e7fb8", sub:"Dialogues read aloud in a British voice.", count:"12 dialogues"},
+ {id:"speaking", name:"Speaking", icon:"🗣️", colour:"#e4572e", sub:"Topics, phrases and role-play practice.", count:"10 topics"},
+ {id:"writing", name:"Writing", icon:"✍️", colour:"#5b8c3e", sub:"From notes and forms to essays and emails.", count:"13 tasks"},
+ {id:"spelling", name:"Spelling Pairs", icon:"🔡", colour:"#b8860b", sub:"16 pairs everyone mixes up — sorted for good.", count:"16 pairs"},
+ {id:"idioms", name:"Idioms", icon:"🌦️", colour:"#3e7cb1", sub:"Around 70 idioms Brits really use.", count:"70 idioms"},
+ {id:"mistakes", name:"Common Mistakes", icon:"⚠️", colour:"#c0392b", sub:"The errors learners make most — and the fixes.", count:"24 fixes"},
+ {id:"life", name:"Real-Life English", icon:"🇬🇧", colour:"#0a5f55", sub:"Shops, the GP, buses, work and small talk.", count:"11 situations"}
+];
+
+/* Grammar: [title, level, rule, examples[], question, options[], answerIdx, why] */
+const GRAMMAR=[
+["I am, you are — the verb ‘be’",0,"Use am with I, is with he/she/it, and are with you/we/they. Short forms (I'm, she's) are normal in speech.","I am a student. · She is from Leeds. · They are happy.","Choose: She ___ a teacher.",["am","is","are"],1,"She takes ‘is’."],
+["Present simple — routines",0,"For habits and facts: I/you/we/they + verb; he/she/it + verb + s.","We live in Manchester. · He works on Saturdays.","Choose: Tom ___ football on Sundays.",["play","plays","playing"],1,"He/she/it adds -s: plays."],
+["Present continuous — now",1,"am/is/are + verb-ing for things happening now or around now.","Look! It is raining. · I am studying English today.","Choose: They ___ TV at the moment.",["watches","watch","are watching"],2,"‘At the moment’ = now, so are watching."],
+["Past simple — regular verbs",1,"Add -ed for finished past actions: worked, watched, lived. Time words: yesterday, last week, ago.","We watched a film last night. · She worked yesterday.","Choose: He ___ in London in 2019.",["lives","lived","live"],1,"Finished past time → lived."],
+["Past simple — irregular verbs",1,"Some verbs change completely: go→went, see→saw, buy→bought, have→had. Learn them in small groups.","I went to York. · We saw a good film. · She bought a coat.","Choose: They ___ a lovely meal.",["eated","ate","eats"],1,"Eat → ate is irregular."],
+["Articles — a, an, the",1,"a/an for one thing, first mention, and jobs. the for a known or only thing. No article for sports, languages, most place names.","She is a nurse. · The sun is hot today. · I play football.","Choose: He is ___ engineer.",["a","an","the"],1,"An before a vowel sound: an engineer."],
+["Plurals and countable nouns",0,"Most nouns add -s. Words ending in -s, -x, -ch, -sh add -es. Some change: man→men, child→children. Use some with uncountables like water and money.","Two buses · three children · some water","Choose: There are two ___ on the table.",["boxs","boxes","box"],1,"-x ending takes -es: boxes."],
+["Some, any, much, many",2,"some in positive sentences and offers; any in questions and negatives; much with uncountable, many with countable.","Would you like some tea? · I haven't got any money. · How many eggs?","Choose: We haven't got ___ milk.",["some","any","much"],1,"Negative sentence → any."],
+["Comparatives — bigger, better",2,"Short adjectives add -er (than). Long adjectives use more. Good→better, bad→worse.","London is bigger than York. · This book is more interesting.","Choose: Today is ___ than yesterday.",["colder","cold","more cold"],0,"Short adjective + -er: colder."],
+["Superlatives — the biggest",2,"the + -est for short adjectives; the most for long ones. Compare three or more things.","Everest is the highest mountain. · It was the most exciting day.","Choose: She is the ___ singer in the class.",["best","better","good"],0,"Good → best in the superlative."],
+["Present perfect — experiences",3,"have/has + past participle for experiences and past actions with a result now. Use ever/never for experiences.","I have visited Scotland. · She has lost her keys.","Choose: Have you ever ___ to Wales?",["be","been","was"],1,"Been is the participle of be."],
+["Present perfect vs past simple",3,"Past simple = finished time (yesterday, in 2020). Present perfect = no finished time, or time up to now (today, this week, ever).","I saw him yesterday. · I have seen him today.","Choose: We ___ that film last week.",["have seen","saw","see"],1,"‘Last week’ is finished → saw."],
+["Going to — future plans",2,"am/is/are going to + verb for plans and predictions based on what you can see.","We are going to visit Bath. · Look at the clouds — it's going to rain.","Choose: I ___ study medicine next year.",["am going to","goes to","went"],0,"Plan → am going to."],
+["Will — decisions and promises",3,"will + verb for instant decisions, promises, offers and predictions. Short form: I'll.","I'll help you. · I think it'll rain tomorrow. · I won't be late.","Choose: ‘I've got no money.’ — ‘Don't worry, I ___ lend you some.’",["lend","'ll lend","lends"],1,"Instant decision/offer → 'll lend."],
+["First conditional",3,"If + present simple, will + verb — for real future possibilities.","If it rains, we'll stay at home. · If you study, you'll pass.","Choose: If she ___ early, we'll catch the train.",["will leave","leaves","left"],1,"After if, use the present simple."],
+["Second conditional",4,"If + past simple, would + verb — for imaginary or unlikely situations.","If I had a car, I would drive to work. · If I were you, I'd rest.","Choose: If we ___ rich, we would travel more.",["are","were","will be"],1,"Imaginary situation → past form were."],
+["Past continuous",3,"was/were + verb-ing for an action in progress at a past moment, often interrupted by the past simple.","I was cooking when he rang. · They were walking home at nine.","Choose: She ___ when the phone rang.",["sleeps","was sleeping","sleep"],1,"In progress in the past → was sleeping."],
+["Used to — past habits",4,"used to + verb for habits and states that are finished now. Negative: didn't use to.","I used to live in Hull. · He didn't use to like tea.","Choose: We ___ play outside every day as children.",["use to","used to","are used to"],1,"Past habit → used to."],
+["Modal verbs — can, must, should",2,"can = ability/permission; must = strong obligation; should = advice. All take the base verb with no ‘to’ (except ought to).","You must wear a seat belt. · You should see a doctor. · Can I pay by card?","Choose: You ___ smoke in the hospital. It is banned.",["mustn't","don't have to","shouldn't"],0,"Banned = mustn't (prohibited)."],
+["Have to vs must",3,"have to = outside rule (law, work). must = speaker's strong feeling. don't have to = not necessary (different from mustn't!).","I have to wear a uniform at work. · You don't have to come — only if you want.","Choose: It's Sunday — you ___ get up early. Stay in bed!",["mustn't","don't have to","have to"],1,"Not necessary → don't have to."],
+["Gerunds and infinitives",4,"verb + -ing after enjoy, finish, mind. verb + to after want, decide, hope, plan. Like/love/hate take both.","I enjoy swimming. · We decided to stay. · She hopes to pass.","Choose: He finished ___ at midnight.",["to work","working","works"],1,"Finish takes the -ing form."],
+["Reported speech",4,"Move tenses back one step: ‘I am tired’ → He said he was tired. ‘I will come’ → She said she would come. say vs tell: tell needs a person (told me).","‘I live in Kent.’ → She said she lived in Kent.","Choose: ‘I am busy,’ he said. → He said he ___ busy.",["is","was","am"],1,"Present moves back to past: was."],
+["The passive voice",5,"be + past participle when the action matters more than who did it. Add by + person only if it matters.","The bridge was built in 1890. · English is spoken here.","Choose: The letters ___ yesterday.",["posted","were posted","post"],1,"Passive, plural, past → were posted."],
+["Relative clauses — who, which, that",5,"who for people, which for things, that for both. The clause gives extra information about the noun.","The man who lives next door is a chef. · The book that I bought is brilliant.","Choose: The woman ___ helped me was very kind.",["which","who","whose"],0,"A person → who."],
+["Question forms and tags",5,"Questions: auxiliary + subject + verb (Do you…? Have you…? Where did…?). Tags agree: You're tired, aren't you? It's cold, isn't it?","Do you like tea? · She hasn't finished, has she?","Choose: You've got a car, ___?",["haven't you","have you","isn't it"],0,"Positive statement → negative tag: haven't you?"]
+];
+
+/* Words: word|pos|definition|example|level */
+const WORDS_RAW=`able|adjective|can do something|She is able to drive.|0
+about|preposition|concerning; roughly|The book is about London.|0
+above|preposition|higher than|The picture is above the sofa.|1
+accept|verb|to take something offered|Please accept this gift.|2
+advice|noun|helpful suggestions|His advice was very useful.|2
+afraid|adjective|feeling fear|She is afraid of spiders.|1
+agree|verb|to have the same opinion|I agree with you.|1
+allow|verb|to let someone do something|Dogs are not allowed here.|2
+almost|adverb|nearly|It is almost midnight.|1
+alone|adjective|without other people|He lives alone.|1
+already|adverb|before now|I have already eaten.|2
+also|adverb|as well|She also speaks Welsh.|0
+although|conjunction|despite the fact that|Although it rained, we went out.|3
+always|adverb|at all times|He always catches the early bus.|0
+angry|adjective|feeling strong displeasure|She was angry about the delay.|1
+arrive|verb|to reach a place|We arrive at six o'clock.|1
+ask|verb|to request or question|Ask the teacher for help.|0
+available|adjective|ready to use or buy|Tickets are still available.|2
+avoid|verb|to keep away from|Avoid the city centre at rush hour.|3
+beautiful|adjective|very pleasant to look at|The garden is beautiful in spring.|0
+because|conjunction|for the reason that|I stayed home because I was ill.|0
+become|verb|to start to be|It became cold in the evening.|2
+before|preposition|earlier than|Finish before lunch.|0
+begin|verb|to start|The lesson begins at nine.|1
+believe|verb|to think something is true|I believe you.|2
+below|preposition|lower than|The flat is below the shop.|1
+between|preposition|in the middle of two things|Sit between Tom and Anna.|1
+bill|noun|a request for payment|Can we have the bill, please?|1
+borrow|verb|to use something and return it|Can I borrow your pen?|2
+brilliant|adjective|excellent; very bright|What a brilliant idea!|2
+busy|adjective|having lots to do|The high street is busy today.|0
+careful|adjective|taking care|Be careful on the ice.|1
+carry|verb|to hold and move something|He carried the bags upstairs.|1
+catch|verb|to get hold of; to board|Catch the 8.15 train to York.|1
+cheap|adjective|costing little money|Train tickets are cheaper online.|0
+choose|verb|to pick|Choose the red one.|1
+comfortable|adjective|pleasant to sit or wear|This chair is very comfortable.|2
+company|noun|a business|She works for a small company.|2
+compare|verb|to look at differences|Compare the two prices.|3
+complain|verb|to say you are unhappy|Guests complained about the noise.|3
+complete|verb|to finish|Complete the form in black ink.|2
+confident|adjective|sure of yourself|He feels confident about the exam.|3
+continue|verb|to keep going|Continue along this road.|2
+convenient|adjective|easy and suitable|The station is convenient for the shops.|3
+cook|verb|to prepare food|She cooks dinner every evening.|0
+correct|adjective|right, with no mistakes|That is the correct answer.|1
+crowded|adjective|full of people|The train was crowded this morning.|2
+customer|noun|a person who buys things|A customer asked for a refund.|2
+decide|verb|to make a choice|We decided to walk home.|2
+delicious|adjective|tasting very good|The soup was delicious.|1
+deliver|verb|to bring something to someone|The parcel was delivered today.|2
+describe|verb|to say what something is like|Describe your home town.|2
+different|adjective|not the same|British and American spelling can be different.|1
+difficult|adjective|hard to do|The exam was difficult.|1
+discount|noun|a lower price|A student discount saves ten per cent.|2
+discover|verb|to find out something new|They discovered a Roman wall.|3
+during|preposition|through a period of time|It rained during the night.|2
+each|determiner|every one separately|Each student gets a book.|1
+early|adjective|before the usual time|We took an early train.|0
+earn|verb|to get money for work|She earns a good salary.|2
+easy|adjective|not difficult|The test was easy.|0
+either|adverb|one or the other|Either day is fine for me.|3
+enough|adverb|as much as needed|Is the room warm enough?|1
+especially|adverb|more than usual|I especially like the coast.|3
+even|adverb|used for surprise|Even the teacher laughed.|3
+excellent|adjective|extremely good|Your English is excellent.|2
+exciting|adjective|making you feel lively interest|The match was exciting.|2
+expensive|adjective|costing a lot|London hotels can be expensive.|0
+explain|verb|to make clear|Please explain this word.|1
+famous|adjective|well known|York is famous for its minster.|1
+favourite|adjective|liked the most|Tea is my favourite drink.|1
+fetch|verb|to go and bring back|Fetch me a glass of water, please.|2
+finally|adverb|at last|We finally arrived home.|2
+flat|noun|a home on one floor|She rents a small flat near the station.|1
+flight|noun|a journey by plane|The flight to Edinburgh takes an hour.|1
+follow|verb|to go after; to understand|Follow me to the platform.|1
+foreign|adjective|from another country|He is learning a foreign language.|2
+forget|verb|to not remember|Don't forget your umbrella.|1
+friendly|adjective|kind and pleasant|The staff are very friendly.|0
+generous|adjective|happy to give|It was generous of you to help.|3
+glad|adjective|pleased|I am glad you came.|2
+government|noun|the people who run a country|The government raised the tax.|4
+guess|verb|to give an answer you are unsure of|Can you guess the word?|2
+habit|noun|something you do regularly|Reading before bed is a good habit.|3
+happen|verb|to take place|What happened yesterday?|1
+healthy|adjective|good for your body|Fruit is healthy food.|1
+holiday|noun|time away from work|We went on holiday to Cornwall.|1
+however|adverb|but|It is expensive; however, it is worth it.|3
+huge|adjective|very big|The queue was huge.|2
+hungry|adjective|wanting food|I am hungry — let us have lunch.|0
+hurry|verb|to move quickly|Hurry, or we will miss the bus.|1
+ill|adjective|not well|She stayed in bed because she was ill.|1
+imagine|verb|to picture in your mind|Imagine living by the sea.|3
+important|adjective|of great value|It is important to practise daily.|1
+improve|verb|to get better|Your spelling will improve with practice.|2
+include|verb|to contain as part of|The price includes breakfast.|3
+instead|adverb|in place of something|Let us walk instead of driving.|3
+invite|verb|to ask someone to come|They invited us for dinner.|2
+journey|noun|travel from one place to another|The journey takes two hours.|1
+keen|adjective|very interested|She is keen on football.|3
+kind|adjective|gentle and helpful|He is a kind neighbour.|0
+knowledge|noun|what you know|Her knowledge of history is impressive.|4
+late|adjective|after the usual time|The train is ten minutes late.|0
+laugh|verb|to make sounds of amusement|We laughed at the joke.|1
+lend|verb|to give for a short time|Can you lend me five pounds?|2
+lift|noun|a machine that moves between floors|Take the lift to the third floor.|1
+local|adjective|near where you live|The local shop opens at seven.|2
+lonely|adjective|unhappy because you are alone|He felt lonely in the new city.|3
+lovely|adjective|very pleasant|What lovely weather!|1
+lucky|adjective|having good fortune|We were lucky with the weather.|2
+married|adjective|having a husband or wife|They have been married for ten years.|1
+mean|verb|to signify|What does this sign mean?|1
+mend|verb|to repair|Can you mend my bicycle?|3
+mention|verb|to speak briefly about|He mentioned your name.|3
+necessary|adjective|needed|Is it necessary to book?|3
+neighbour|noun|a person living nearby|Our neighbours are very quiet.|2
+notice|verb|to see or become aware of|Did you notice the sign?|3
+offer|verb|to say you will give or do something|She offered me a cup of tea.|2
+often|adverb|many times|We often go to the market.|0
+opposite|preposition|facing across from|The bank is opposite the library.|2
+perhaps|adverb|maybe|Perhaps it will rain later.|2
+pleased|adjective|happy about something|I am pleased with my results.|2
+plenty|pronoun|more than enough|There is plenty of time.|2
+polite|adjective|having good manners|It is polite to say thank you.|2
+popular|adjective|liked by many people|The café is popular with students.|2
+possible|adjective|able to happen|Is it possible to pay by card?|2
+prefer|verb|to like one thing more|I prefer tea to coffee.|2
+prepare|verb|to get ready|Prepare your bag the night before.|3
+pretty|adjective|attractive|The village is very pretty.|1
+price|noun|how much something costs|The price includes delivery.|1
+probably|adverb|likely to be true|It will probably snow tonight.|2
+properly|adverb|correctly|Hold the pen properly.|3
+proud|adjective|pleased with achievements|She is proud of her children.|3
+provide|verb|to give or supply|The hotel provides towels.|4
+queue|noun|a line of waiting people|We stood in a long queue.|2
+`;
+const WORDS=WORDS_RAW.split("\n").map(l=>{const[a,b,c,d,e]=l.split("|");return{w:a,pos:b,def:c,ex:d,lvl:+e};});
+
+/* Idioms: idiom|meaning|example */
+const IDIOMS_RAW=`a piece of cake|very easy|The exam was a piece of cake.
+break the ice|to start a conversation with strangers|Games help to break the ice at parties.
+under the weather|feeling slightly ill|I am feeling under the weather today.
+cost an arm and a leg|very expensive|That car cost an arm and a leg.
+hit the books|to start studying|I must hit the books tonight.
+once in a blue moon|very rarely|We eat out once in a blue moon.
+the best of both worlds|advantages of two different things|Working from home gives me the best of both worlds.
+speak of the devil|said when the person you were talking about arrives|Speak of the devil — we were just talking about you!
+see eye to eye|to agree fully|We do not always see eye to eye.
+when pigs fly|never|He will tidy his room when pigs fly.
+to cut corners|to do something cheaply or quickly, badly|Do not cut corners on safety.
+let the cat out of the bag|to reveal a secret|She let the cat out of the bag about the party.
+to feel under the weather|to feel ill|He is at home feeling under the weather.
+raining cats and dogs|raining heavily|Take an umbrella — it is raining cats and dogs.
+a blessing in disguise|a good thing that first seemed bad|Losing that job was a blessing in disguise.
+call it a day|to stop work for the day|Let us call it a day and go home.
+get out of hand|to become uncontrollable|The party got out of hand.
+hit the road|to leave; start a journey|We hit the road at dawn.
+on the ball|alert and efficient|Our new manager is really on the ball.
+pull someone's leg|to joke with someone|Relax — I am only pulling your leg.
+so far so good|things are going well up to now|The trip is fine so far, so good.
+the elephant in the room|an obvious problem nobody mentions|Let us talk about the elephant in the room.
+to get the ball rolling|to start something|Let us get the ball rolling with introductions.
+under the table|secretly, often illegally|He was paid under the table.
+up in the air|uncertain|Our holiday plans are still up in the air.
+a storm in a teacup|a lot of fuss about something small|It was a storm in a teacup, really.
+as right as rain|completely well again|After a rest, she was as right as rain.
+chuffed to bits|very pleased (British)|He was chuffed to bits with his results.
+full of beans|energetic and lively|The children are full of beans this morning.
+knackered|very tired (informal British)|I am absolutely knackered after that walk.
+a cuppa|a cup of tea (British)|Fancy a cuppa?
+Bob's your uncle|and there you are; it is easy|Add water, stir, and Bob's your uncle!
+not my cup of tea|not what I like|Horror films are not my cup of tea.
+cheeky|slightly rude but amusing|He is a cheeky little boy.
+dodgy|not trustworthy; not working well|The car has a dodgy engine.
+faff about|to waste time doing little|Stop faffing about and start!
+gutted|very disappointed (British informal)|She was gutted to miss the match.
+in a pickle|in a difficult situation|We are in a pickle — the train is cancelled.
+keep your chin up|stay cheerful in difficulty|Keep your chin up; things will improve.
+long time no see|said after not seeing someone for ages|Long time no see! How have you been?
+mind your own business|do not interfere|Tell him to mind his own business.
+no worries|it is fine; do not worry|No worries, I can wait.
+over the moon|extremely happy|They are over the moon about the baby.
+piece of cake (task)|an easy task|Filling in the form was a piece of cake.
+pop to the shops|go quickly to the shops|I am just popping to the shops.
+proper job|well done (informal)|You have done a proper job there.
+quite the opposite|completely different|He is not lazy — quite the opposite.
+right as rain|perfectly fine|A cup of tea and I will be right as rain.
+run out of|to have none left|We have run out of milk.
+sorted|arranged; solved (British)|Tickets are booked — sorted!
+take the mickey|to tease or mock|They take the mickey out of his accent.
+the full Monty|everything; the complete thing|Breakfast with the full Monty, please.
+throw in the towel|to give up|After hours of trying, he threw in the towel.
+tight-fisted|unwilling to spend money|He is too tight-fisted to buy a round.
+to be on cloud nine|to be extremely happy|She has been on cloud nine since the news.
+to bite the bullet|to face something unpleasant bravely|I will bite the bullet and ring the dentist.
+to blow your own trumpet|to boast|He loves blowing his own trumpet.
+to burn the midnight oil|to work late into the night|She burnt the midnight oil before the exam.
+to change your tune|to change your opinion|He changed his tune when he saw the price.
+to cost the earth|to be extremely expensive|The wedding did not have to cost the earth.
+to cry over spilt milk|to waste time worrying about past mistakes|It is done — do not cry over spilt milk.
+to cut to the chase|to get to the point|Let me cut to the chase: we need more time.
+to get cold feet|to become nervous before doing something|He got cold feet before the wedding.
+to go down a treat|to be very well received|The cake went down a treat.
+to have a chinwag|to have a chat (British informal)|We had a good chinwag over tea.
+to keep an eye on|to watch carefully|Keep an eye on the children.
+to learn the ropes|to learn how to do a job|It takes a week to learn the ropes.
+to let off steam|to release energy or emotion|He goes running to let off steam.
+to miss the boat|to miss an opportunity|Apply now or you will miss the boat.
+to nip in the bud|to stop a problem early|Nip that behaviour in the bud.
+`;
+const IDIOMS=IDIOMS_RAW.split("\n").map(l=>{const[a,b,c]=l.split("|");return{i:a,m:b,ex:c};});
+
+/* Spelling pairs: [a, b, meaningA, meaningB, sentenceWithBlank, correctWord] */
+const PAIRS=[
+["their","there","belonging to them","in that place","Put the books over ___.","there"],
+["their","they're","belonging to them","they are","___ house is the blue one.","Their"],
+["your","you're","belonging to you","you are","___ welcome!","You're"],
+["its","it's","belonging to it","it is","The cat licked ___ paws.","its"],
+["to","too","towards / in order to","also / more than enough","I want to come ___.","too"],
+["to","two","towards","the number 2","She has ___ brothers.","two"],
+["wear","where","to have clothes on","in which place","___ do you live?","Where"],
+["hear","here","to listen","in this place","Come ___ and listen.","here"],
+["right","write","correct","to put words on paper","Please ___ your name.","write"],
+["weather","whether","rain, sun and wind","if; or not","I do not know ___ it will rain.","whether"],
+["advice","advise","noun: suggestions","verb: to suggest","Can you give me some ___?","advice"],
+["practice","practise","noun: training","verb: to train (British spelling)","You need more ___ before the match.","practice"],
+["affect","effect","verb: to influence","noun: a result","The rain will ___ the match.","affect"],
+["lose","loose","to misplace; to not win","not tight","Do not ___ your keys.","lose"],
+["quiet","quite","silent","rather","Please be ___ in the library.","quiet"],
+["than","then","used in comparisons","after that; next","First lunch, ___ we walk.","then"]
+];
+
+/* Common mistakes: [wrong, right, note] */
+const MISTAKES=[
+["I am agree.","I agree.","‘Agree’ is a verb — no ‘am’ needed."],
+["She don't like tea.","She doesn't like tea.","He/she/it takes doesn't."],
+["I buyed a ticket.","I bought a ticket.","Buy is irregular: buy → bought."],
+["He is more taller.","He is taller.","Use -er OR more, never both."],
+["I have 25 years.","I am 25 years old.","Age uses ‘be’ in English."],
+["The news are good.","The news is good.","News is uncountable and singular."],
+["I am living here since 2020.","I have lived here since 2020.","Use the present perfect with since."],
+["She told that she was tired.","She said that she was tired.","Say needs no person; tell needs one (told me)."],
+["I did a mistake.","I made a mistake.","Collocation: make a mistake."],
+["Let us discuss about it.","Let us discuss it.","Discuss takes no ‘about’."],
+["I went to home.","I went home.","No ‘to’ before home."],
+["He gave me an advice.","He gave me some advice.","Advice is uncountable — no ‘an’."],
+["The peoples were friendly.","The people were friendly.","People is already plural."],
+["I am boring in this lesson.","I am bored in this lesson.","-ed = how you feel; -ing = the thing."],
+["She can to swim.","She can swim.","Modal verbs take the base verb, no ‘to’."],
+["I did not went.","I did not go.","After did, use the base verb."],
+["My English is more better now.","My English is better now.","Better is already comparative."],
+["I want that you help me.","I want you to help me.","Want + person + to + verb."],
+["He suggested me to wait.","He suggested that I wait. / He advised me to wait.","Suggest does not take ‘me to’."],
+["The train arrived to the station.","The train arrived at the station.","Arrive at (a place/building), arrive in (a city/country)."],
+["I am used to wake up early. (habit now)","I am used to waking up early.","Be used to + -ing means it feels normal."],
+["Marry with someone","Marry someone","Marry takes no ‘with’."],
+["Despite of the rain","Despite the rain","Despite takes no ‘of’. (In spite of does.)"],
+["I look forward to see you.","I look forward to seeing you.","After look forward to, use -ing."]
+];
+
+/* Reading: [title, level, text, q, options, ans] */
+const READING=[
+["A Day in York",1,"York is a small city in the north of England. It has very old streets and a famous minster. On Saturday, Maria visited York with her friend Tom. First, they walked on the city walls. Then they visited a museum about Viking history. At lunchtime, they ate sandwiches in a café near the river. In the afternoon, it rained, so they bought an umbrella and went to the shops. Maria bought a book about York, and Tom bought some famous York chocolate. They went home by train at six o'clock, tired but happy.","Where is York?",["In the south of England","In the north of England","In Wales"],1],
+["The Corner Shop",0,"Mr Patel runs a small corner shop. It opens at seven in the morning and closes at ten at night. People buy milk, bread, newspapers and sweets there. Mr Patel knows all his customers. He says, ‘A small shop is part of the neighbourhood.’ On Sundays, many people come for fresh rolls. His daughter helps him at weekends.","When does the shop open?",["At six","At seven","At ten"],1],
+["A Letter from Edinburgh",2,"Dear Sam, I am writing from Edinburgh, where I am staying with my cousin for a week. Yesterday we climbed Arthur's Seat, an old volcano in the middle of the city. The view from the top was wonderful — we could see the castle and the sea. In the evening we watched street performers on the Royal Mile. The weather changes every hour here: sun, then rain, then sun again! Tomorrow we plan to visit the National Museum, which is free. See you soon, Priya.","What could they see from Arthur's Seat?",["Only the castle","The castle and the sea","The museum"],1],
+["The Allotment",2,"Many British people grow vegetables on an allotment — a small piece of land they rent from the council. Mr Green has had his allotment for twenty years. He grows potatoes, beans and strawberries. ‘It keeps me fit,’ he says, ‘and the food tastes better.’ In summer, neighbours share their vegetables and swap advice about the weather. Last year, Mr Green won a prize for the biggest pumpkin at the village show.","How long has Mr Green had his allotment?",["Two years","Twelve years","Twenty years"],2],
+["Bonfire Night",3,"Every year on 5 November, people in Britain celebrate Bonfire Night. They light bonfires and watch fireworks to remember Guy Fawkes, who tried to blow up Parliament in 1605 — and failed. Children sometimes make a ‘guy’ from old clothes and ask ‘Penny for the guy!’ Families eat jacket potatoes and toffee apples around the fire. Remember, remember, the fifth of November!","Why do people celebrate Bonfire Night?",["To welcome winter","To remember Guy Fawkes and 1605","To celebrate a harvest"],1],
+["The Seaside Town",3,"Whitby is a small seaside town in Yorkshire, famous for fish and chips and for Dracula — Bram Stoker wrote part of the novel there. Visitors climb the 199 steps to the old abbey, which stands on a hill above the harbour. Fishing boats bring in fresh fish every morning. In summer, the beaches are busy, but in winter the town is quiet and the sea is grey and wild.","What is Whitby famous for?",["Cheese and castles","Fish and chips and Dracula","Trains and theatres"],1],
+["A Cup of Tea",3,"Tea is more than a drink in Britain — it is an answer to almost everything. Good news? Put the kettle on. Bad day? Put the kettle on. Most people drink tea with milk, and many have strong opinions about whether the milk goes in first. Builders' tea is strong and dark. A typical adult drinks several cups a day, and offering tea is the first step of British hospitality.","What is ‘builders' tea’?",["Weak tea with lemon","Strong, dark tea","Tea without milk"],1],
+["The Football Match",4,"Last Saturday, over 60,000 fans filled the stadium for the derby. The home team scored in the twelfth minute, and the crowd erupted. The visitors equalised just before half-time with a superb header. In the second half, both goalkeepers made outstanding saves. The match ended 1–1, a fair result according to most supporters, though both managers claimed their side deserved all three points.","What was the final score?",["1–0","2–1","1–1"],2],
+["Working from Home",4,"Since 2020, working from home has become normal for many office workers in Britain. Supporters say it saves commuting time and money, and helps parents. Critics argue that teams are less creative online and that young staff learn less without experienced colleagues nearby. Many companies now offer a hybrid pattern: two or three days in the office, the rest at home. The debate continues, but few expect a full return to the old five-day office week.","What does ‘hybrid’ working mean here?",["Working only at night","Mixing office days and home days","Working for two companies"],1],
+["The Canal Boats",5,"Britain's canals were built over 200 years ago to carry coal and goods. Today, colourful narrowboats carry holidaymakers instead. A narrowboat is only about two metres wide, but it can contain a kitchen, beds and even a small bathroom. Life on the canal is slow: boats travel at walking pace, and you must open locks by hand. Many people say that is exactly the point — the canal forces you to slow down.","How fast do narrowboats travel?",["At cycling speed","At walking pace","At 30 miles per hour"],1],
+["Libraries Under Pressure",5,"Public libraries have been part of British life since the nineteenth century. They lend books, of course, but they also offer computer access, children's story times, job clubs and warm spaces in winter. However, many councils have cut library budgets, and hundreds of branches have closed in the last decade. Campaigners argue that libraries are essential for equality: they are one of the few indoor places where nobody expects you to spend money.","Why do campaigners defend libraries?",["They sell cheap books","They are free, equal spaces for everyone","They are very old buildings"],1]
+];
+
+/* Listening: [title, level, script, q, options, ans] */
+const LISTENING=[
+["At the Café",0,"Waiter: Good morning! What would you like? Customer: A cup of tea and a cheese sandwich, please. Waiter: White or brown bread? Customer: Brown, please. How much is that? Waiter: Four pounds fifty.","What did the customer order with the tea?",["A cake","A cheese sandwich","A soup"],1],
+["Buying a Train Ticket",1,"Clerk: Good afternoon. Passenger: A single to Bath, please. Clerk: That is eighteen pounds. The next train leaves at two fifteen from platform three. Passenger: Thank you very much.","What time does the train leave?",["At two fifty","At two fifteen","At three fifteen"],1],
+["Weather Forecast",1,"And now the weather. Tomorrow will start cloudy with some rain in the morning. In the afternoon, the sun will come out and it will feel warm, about nineteen degrees. Take a jacket for the evening — it will be cooler, around eleven degrees.","What will the afternoon be like?",["Rainy and cold","Sunny and warm","Snowy"],1],
+["At the Doctor's",2,"Doctor: Good morning. What seems to be the problem? Patient: I have had a sore throat and a headache since Monday. Doctor: Let me take your temperature. You have a slight fever. Drink plenty of water and rest for two days.","Since when has the patient felt ill?",["Since Friday","Since Monday","Since yesterday"],1],
+["Booking a Hotel",2,"Receptionist: Good evening, City Hotel. Guest: Hello, I would like to book a double room for Friday night. Receptionist: Certainly. A double room is ninety-five pounds, including breakfast. Guest: Perfect. My name is Carter.","What is included in the price?",["Dinner","Breakfast","Parking"],1],
+["Directions to the Library",2,"Excuse me, how do I get to the library? Go straight on, then turn left at the traffic lights. The library is on your right, opposite the post office. It takes about five minutes on foot.","Where is the library?",["Next to the station","Opposite the post office","Behind the school"],1],
+["A Phone Call at Work",3,"Hello, Bright Office Supplies. Can I help you? Yes, I am ringing about my order. It has not arrived yet. I am very sorry. Let me check. Your order left our warehouse yesterday, so it should arrive tomorrow morning. Thank you for your patience.","When should the order arrive?",["Today","Tomorrow morning","Next week"],1],
+["At the Market",3,"How much are the strawberries? Two pounds a punnet, or three punnets for five pounds. I will take three, please. And a kilo of potatoes. That is seven pounds fifty altogether.","How many punnets of strawberries did she buy?",["Two","Three","Five"],1],
+["The Football Results",4,"And now the sports news. United beat City two-one in a thrilling derby. Rovers drew one-all with Athletic, and County lost three-nil away. In the late match, a last-minute penalty gave Wanderers a dramatic victory.","Who lost three-nil?",["United","Rovers","County"],2],
+["A Job Interview",4,"Tell me about yourself. Well, I have worked in customer service for five years, and I enjoy solving problems. Why do you want this job? Because your company has an excellent reputation, and I would like to develop my skills.","How long has she worked in customer service?",["Three years","Five years","Seven years"],1],
+["The Village Fête",5,"The annual village fête takes place this Saturday on the green. There will be a cake stall, a raffle and the famous egg-and-spoon race. The fête opens at eleven, and the mayor will judge the best-dressed scarecrow competition at two. All money raised goes to the village hall roof fund.","What is the money for?",["The school library","The village hall roof","A new playground"],1],
+["Renting a Flat",5,"I am ringing about the flat in Elm Road. Is it still available? Yes, it is. The rent is eight hundred and fifty pounds a month, bills not included. It has two bedrooms and a small garden. Could I view it on Thursday? Certainly — shall we say half past five?","How much is the rent?",["£750 a month","£850 a month","£950 a month"],1]
+];
+
+/* Speaking: [topic, level, prompts[], phrases[]] */
+const SPEAKING=[
+["Introducing Yourself",0,["Say your name, where you are from and where you live now.","Talk for 30 seconds about your family or your home."],["My name is…","I come from…, but now I live in…","I live with…"]],
+["My Daily Routine",0,["Describe your day from morning to night using the present simple.","Say what you do at the weekend."],["I usually get up at…","After that, I…","In the evening, I…"]],
+["Shopping",1,["Ask for a shirt in a different size and colour.","Ask the price and decide: buy it or leave it politely."],["Have you got this in a larger size?","How much is it?","I'll leave it, thank you."]],
+["At a Restaurant",1,["Order a starter, a main course and a drink.","Ask for the bill and pay."],["Could I have…, please?","I'd like the…, please.","Could we have the bill, please?"]],
+["Asking for Directions",1,["Ask how to get to the station, then repeat the directions.","Thank the person politely."],["Excuse me, how do I get to…?","Turn left at…","Go straight on."]],
+["Making Plans",2,["Invite a friend to do something on Saturday.","Agree on a time and place."],["Would you like to…?","How about meeting at…?","See you there at…"]],
+["Talking about the Past",2,["Talk about your last holiday for one minute.","Say three things you did yesterday."],["We went to…","I visited…","The best part was…"]],
+["Health and the GP",2,["Explain a health problem: where it hurts and since when.","Ask what you should do."],["I've had a headache since…","It hurts when I…","Should I take…?"]],
+["Opinions and Films",3,["Give your opinion of a film you have seen, with reasons.","Agree and disagree politely with a partner."],["In my opinion…","I thought it was… because…","I see your point, but…"]],
+["A Job Interview",4,["Answer: ‘Tell me about yourself’ in one minute.","Talk about a strength and a time you solved a problem."],["I have experience in…","One of my strengths is…","For example, last year I…"]]
+];
+
+/* Writing: [task, level, prompt, tips[], model] */
+const WRITING=[
+["A Note to a Neighbour",0,"Write a short note (30–40 words): you are going on holiday and ask your neighbour to water your plants.","Say when you are away; be polite; say thank you.","Dear Mrs Lee, I am on holiday from Monday to Friday. Could you water my plants, please? The key is under the mat. Thank you very much! Best wishes, Sam"],
+["Filling in a Form",0,"Practise writing: full name, address, date of birth (day month year, e.g. 25 November 1990), phone number and email — all in CAPITAL LETTERS.","Forms in Britain usually want surname first, then first name.","SURNAME: AHMED · FIRST NAME: OMAR · DATE OF BIRTH: 25 NOVEMBER 1990"],
+["A Postcard",1,"Write a postcard (50 words) from a British seaside town to a friend.","Write about the weather, what you did, and the food.","Dear Ana, Greetings from Whitby! The weather is sunny but windy. Yesterday we climbed the 199 steps to the abbey. The fish and chips are delicious. Wish you were here! Love, Tom"],
+["A Text Message",1,"Write a text to a friend: you will be 20 minutes late for coffee. Apologise and explain why.","Texts can be informal, but a reason makes it polite.","Hi Sara, so sorry — my bus is late. I'll be about 20 minutes late. Order me a tea, please! See you soon x"],
+["An Email to a Teacher",2,"Write a polite email (60–80 words): you were ill and missed a lesson; ask what homework you missed.","Use a clear subject line, Dear…, and sign off with Kind regards.","Subject: Homework from Tuesday. Dear Mr Brown, I am sorry I missed Tuesday's lesson because I was ill. Could you tell me what homework I missed, please? Thank you. Kind regards, Laila Hassan"],
+["A Diary Entry",2,"Write about yesterday (70 words) in the past simple. Use time linkers: first, then, after that, finally.","Keep every verb in the past — a classic exam check.","Yesterday was busy. First, I went to the market. Then I cooked lunch for my family. After that, we walked in the park. Finally, I watched a film and went to bed early."],
+["Instructions: Making Tea",2,"Write instructions for making a proper cup of British tea, using imperatives and sequence words.","Imperatives have no subject: Boil…, Pour…, Add….","First, boil fresh water. Warm the pot, add one teabag per person, and pour the water over. Leave for three minutes. Then pour into cups and add milk and sugar to taste."],
+["A Review of a Café",3,"Write a review (90 words): give stars, describe the food, service and price, and say who you recommend it to.","Balance positives and one honest negative.","The Copper Kettle ★★★★☆. This small café near the station serves excellent homemade cakes and proper builders' tea. The staff are friendly, though it gets crowded at lunchtime. Prices are fair. Recommended for anyone who loves a quiet breakfast."],
+["A Formal Letter",3,"Write to a council (100 words) asking for a new bus stop near your street. Use formal language.","Formal openings: Dear Sir or Madam, … Yours faithfully,","Dear Sir or Madam, I am writing to request a new bus stop on Mill Road. Many elderly residents walk fifteen minutes to the nearest stop. A stop near the shops would help the whole community. I would be grateful if you could consider this. Yours faithfully, J. Carter"],
+["For and Against Essay",4,"Write 140 words: ‘Living in a big city — advantages and disadvantages.’ Use On the one hand / On the other hand.","Give two points each side, then your conclusion.","Living in a big city has clear advantages. On the one hand, there are jobs, universities and excellent transport. On the other hand, housing is expensive and life can be stressful. In my view, cities suit young people, while quieter towns suit families."],
+["A CV Summary",4,"Write a 60-word personal statement for a CV: your experience, skills and what you are looking for.","Use strong verbs: managed, organised, delivered.","Reliable customer service assistant with four years' experience in busy retail. Skilled in handling payments, resolving complaints and training new staff. Organised, calm under pressure and fluent in two languages. Now seeking a full-time role in a friendly, professional team."],
+["A Story Opening",5,"Write the opening of a story (120 words) that begins: ‘The letter arrived on the coldest day of the year.’","Set the scene, introduce one character, end with a hook.","The letter arrived on the coldest day of the year. Frost covered the windows of the little house in Haworth, and the kettle had only just boiled when Margaret heard the postman's step. She did not recognise the handwriting. Hands trembling, she opened the envelope — and the room seemed to tilt."],
+["A Report",5,"Write a short report (150 words) on a survey of 50 students about learning English: what helps most, and your recommendation.","Use headings, percentages and formal linkers: Furthermore, In conclusion.","Introduction: Fifty students answered our survey. Findings: 68% said speaking practice helped most, while 22% preferred grammar exercises. Furthermore, almost all students wanted more listening practice. In conclusion, we recommend a weekly conversation club."]
+];
+
+/* First steps */
+const FIRST=[
+["The Alphabet & Sounds","A a (apple) · B b (book) · C c (cat) · D d (dog) · E e (egg) · F f (fish) · G g (goat) · H h (hat) · I i (ink) · J j (jam) · K k (kite) · L l (lion) · M m (milk) · N n (nose) · O o (orange) · P p (pen) · Q q (queen) · R r (rabbit) · S s (sun) · T t (tea) · U u (umbrella) · V v (van) · W w (water) · X x (box) · Y y (yellow) · Z z (zebra — pronounced ‘zed’ in Britain)."],
+["Numbers 1–100","1 one · 2 two · 3 three · 4 four · 5 five · 6 six · 7 seven · 8 eight · 9 nine · 10 ten · 11 eleven · 12 twelve · 13 thirteen · 20 twenty · 30 thirty · 40 forty (no ‘u’!) · 50 fifty · 100 one hundred. Phone numbers are read one digit at a time: 07700 900461 = ‘oh double seven oh oh…’."],
+["Greetings","Hello / Hi (informal) · Good morning (before 12) · Good afternoon (12–5) · Good evening (after 5) · Goodbye / Bye · See you soon · How are you? — I'm fine, thank you. And you? · Pleased to meet you (first meeting)."],
+["Days, Months & Dates","Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday. January…December. Dates: the 25th of November, or 25 November 2026. Say: ‘the twenty-fifth of November.’"],
+["Colours & the Weather","Red, orange, yellow, green, blue, purple, pink, brown, black, white, grey. British weather talk: It's sunny / cloudy / raining / snowing / windy / cold / warm. ‘Lovely day, isn't it?’ is the classic British conversation starter."],
+["At Home — First Words","house, flat, room, kitchen, bathroom, bedroom, door, window, table, chair, bed, key, bag, phone, book, pen, cup, tea, water, bread, milk. ‘This is my…’ / ‘That is a…’"]
+];
+
+/* Real life: [situation, phrases[], dialogue] */
+const LIFE=[
+["At the Supermarket",["Excuse me, where is the bread?","How much is this?","Have you got a bag, please? (Shops charge for bags.)","I'll pay by card."],"You: Excuse me, where are the eggs? Assistant: Aisle three, next to the milk. You: Thank you. And do you sell stamps? Assistant: Yes, at the till."],
+["On the Bus",["A single to the city centre, please.","Does this bus go to the station?","Could you tell me when we get to Mill Road?","Thank you, driver — everyone says this getting off in Britain!"],"Driver: Where to? You: A return to the university, please. Driver: That's £4.20. Contactless? You: Yes, please."],
+["At the GP Surgery",["I'd like to make an appointment, please.","I've had a cough for a week.","It hurts here.","How many times a day should I take these?"],"Receptionist: Can I take your name and date of birth? You: Yes — and I need an appointment this week if possible."],
+["At the Post Office",["I'd like to send this parcel to France, please.","First class or second class?","How much is a stamp for this letter?","Can I have a book of stamps, please?"],"Clerk: Is there anything valuable inside? You: No, just clothes. Clerk: That'll be £6.85, please."],
+["Renting a Room",["I'm ringing about the room to let.","Is it still available?","Are bills included?","When could I view it?"],"You: Hello, I saw your advert for the room in Headingley. Landlord: Yes, it's £550 a month including bills. You: Could I view it on Saturday?"],
+["At the Job Centre / Work",["I'm looking for work in retail.","I have experience as a shop assistant.","Could I have an application form?","When does the job start?"],"Advisor: What kind of work are you looking for? You: Something full-time, and I can start straight away."],
+["Small Talk",["Lovely weather, isn't it?","Did you have a good weekend?","How's your family?","We must have a cup of tea sometime."],"A: Cold today, isn't it? B: Freezing! Still, at least it's not raining. A: True — that makes a change!"],
+["At the Chemist's",["Have you got anything for a headache?","I need something for a sore throat.","Do I need a prescription for this?","How often should I take it?"],"Chemist: Try these — two tablets, three times a day with food. You: Thank you. How much do I owe you?"],
+["Booking a Table",["I'd like to book a table for two on Friday at seven.","Do you have anything earlier?","It's for a birthday — could we have a quiet corner?","Thank you, see you on Friday."],"Restaurant: Hello, The Ivy House. You: Hello, I'd like to book a table for four this Saturday, please."],
+["At the Railway Station",["A day return to Manchester, please.","Which platform does it leave from?","Is this the right train for Leeds?","Sorry, is this seat taken?"],"You: Excuse me, is this the train for Leeds? Passenger: No, that's the next one — platform 5. You: Thank you so much!"],
+["Dealing with Problems",["Excuse me, I think there's a mistake on my bill.","This item is faulty — could I exchange it?","I'm sorry, but the room is very noisy.","Could I speak to the manager, please?"],"You: I'm afraid this kettle doesn't work. Assistant: No problem — would you like a replacement or a refund?"]
+];
+
+/* Placement questions */
+const PLACEMENT=[
+["She ___ a nurse.",["am","is","are"],1],
+["I ___ to work by bus every day.",["goes","go","going"],1],
+["They ___ a film last night.",["watch","watches","watched"],2],
+["Have you ever ___ to Scotland?",["be","been","being"],1],
+["If it rains tomorrow, we ___ at home.",["stay","would stay","will stay"],2],
+["This book is ___ than that one.",["interesting","more interesting","most interesting"],1],
+["The report ___ by the manager yesterday.",["wrote","was written","writes"],1],
+["She told me she ___ busy.",["is","was","be"],1],
+["You ___ smoke here — it's forbidden.",["don't have to","mustn't","shouldn't"],1],
+["I'm looking forward ___ you again.",["to see","to seeing","see"],1]
+];
+
+const SENTENCES=["I would like a cup of tea, please.","The train to London leaves at half past nine.","Could you tell me the way to the station?","She has lived in Manchester since twenty twenty.","It is raining, so do not forget your umbrella.","We are going to visit my grandmother this weekend.","How much does this jacket cost?","Thank you very much for your help."];
+</script>
+<script>
+/* ================= STATE (localStorage) ================= */
+const KEY="brightEnglishHub2";
+let S={xp:0, streak:0, lastDay:"", todayXP:0, today:"", done:{}, level:null, name:"", rate:"1", chatStep:0};
+try{ const raw=localStorage.getItem(KEY); if(raw) S=Object.assign(S, JSON.parse(raw)); }catch(e){}
+const todayStr=new Date().toDateString();
+if(S.today!==todayStr){ S.today=todayStr; S.todayXP=0; }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} renderStats(); }
+function renderStats(){
+  const xp="⭐ "+S.xp+" XP", st="🔥 "+S.streak+" day streak";
+  ["chip-xp","side-xp","sheet-xp"].forEach(id=>{const el=document.getElementById(id); if(el) el.textContent=xp;});
+  ["chip-streak","side-streak","sheet-streak"].forEach(id=>{const el=document.getElementById(id); if(el) el.textContent=st;});
+  const ring=document.getElementById("goal-ring"); const off=163.3*(1-Math.min(S.todayXP,20)/20);
+  if(ring) ring.style.strokeDashoffset=off;
+  const gt=document.getElementById("goal-text");
+  if(gt) gt.textContent = S.todayXP>=20 ? "Goal reached — brilliant work today! 🎉" : "Earn 20 XP today · "+S.todayXP+" / 20 XP so far.";
+  const cl=document.getElementById("chip-level");
+  if(cl) cl.textContent = S.level!==null && S.level!==undefined ? "Level: "+LEVELS[S.level] : "Level: Start the placement test";
+}
+function addXP(n){
+  const before=Math.floor(S.xp/100);
+  S.xp+=n; S.todayXP+=n;
+  if(S.lastDay!==todayStr){
+    const y=new Date(Date.now()-864e5).toDateString();
+    S.streak = (S.lastDay===y) ? S.streak+1 : 1;
+    S.lastDay=todayStr;
+  }
+  save();
+  toast("+"+n+" XP 🎉");
+  if(Math.floor(S.xp/100)>before) setTimeout(()=>toast("Level up! You reached "+(Math.floor(S.xp/100)+1)*100+" XP 🏆"),700);
+}
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),2200); }
+function doneKey(sec,id){ return sec+":"+id; }
+function isDone(sec,id){ return !!S.done[doneKey(sec,id)]; }
+function markDone(sec,id,xp){ if(!isDone(sec,id)){ S.done[doneKey(sec,id)]=1; save(); addXP(xp||10);} }
+const SAYREG=[]; function regSay(t){ SAYREG.push(String(t)); return SAYREG.length-1; }
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* ================= SPEECH ================= */
+function britVoice(){ try{ const vs=speechSynthesis.getVoices(); return vs.find(v=>v.lang==="en-GB")||vs.find(v=>v.lang&&v.lang.startsWith("en-GB"))||vs.find(v=>v.lang&&v.lang.startsWith("en")); }catch(e){ return null; } }
+if("speechSynthesis" in window){ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices(); }
+function speakText(text){
+  if(!("speechSynthesis" in window)){ toast("Sorry — this browser cannot speak."); return; }
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text); u.lang="en-GB"; u.rate=parseFloat(S.rate||"1");
+  const v=britVoice(); if(v) u.voice=v;
+  speechSynthesis.speak(u);
+}
+let recog=null;
+function listen(btn, cb){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){ toast("Speech recognition is not supported here — please type instead."); cb(null); return; }
+  if(recog){ try{recog.stop();}catch(e){} }
+  recog=new SR(); recog.lang="en-GB"; recog.interimResults=false; recog.maxAlternatives=1;
+  btn.classList.add("listening");
+  recog.onresult=e=>{ btn.classList.remove("listening"); cb(e.results[0][0].transcript); };
+  recog.onerror=()=>{ btn.classList.remove("listening"); toast("I couldn't hear that — try again, or type instead."); };
+  recog.onend=()=>btn.classList.remove("listening");
+  try{ recog.start(); }catch(e){ btn.classList.remove("listening"); }
+}
+
+/* ================= NAV ================= */
+const NAV=[["home","🏠","Home"],["path","🗺️","My Path"],["learn","📚","Learn"],["words","🔤","Words"],["practice","🎯","Practice"],["progress","📈","Progress"],["me","👤","Me"]];
+document.getElementById("snav").innerHTML=NAV.map(n=>'<button data-snav="'+n[0]+'" onclick="showView(\''+n[0]+'\')">'+n[1]+" "+n[2]+"</button>").join("")+
+ '<button onclick="openTutor(\'ask\')">🤖 AI Tutor</button>';
+let currentSection=null;
+function showView(v){
+  document.querySelectorAll(".view").forEach(el=>el.classList.remove("on"));
+  document.getElementById("view-"+v).classList.add("on");
+  document.querySelectorAll(".dock [data-nav]").forEach(b=>b.classList.toggle("act", b.dataset.nav===v || (b.dataset.nav==="more"&&["words","practice","progress","me"].includes(v))));
+  document.querySelectorAll("[data-snav]").forEach(b=>b.classList.toggle("act", b.dataset.snav===v));
+  window.scrollTo({top:0});
+  if(v==="progress") renderProgress();
+  if(v==="home") renderHomeBits();
+}
+function openSheet(){ document.getElementById("sheet").classList.add("open"); renderStats(); }
+function closeSheet(){ document.getElementById("sheet").classList.remove("open"); }
+
+/* ================= SECTION CARDS ================= */
+function secCard(s){
+  return '<button class="seccard glass press" onclick="openSection(\''+s.id+'\')">'+
+   '<span class="sic" style="background:'+s.colour+'">'+s.icon+'</span>'+
+   '<span><h3>'+s.name+'</h3><p>'+s.sub+'</p></span><span class="cnt">'+s.count+'</span></button>';
+}
+document.getElementById("home-sections").innerHTML=SECTIONS.map(secCard).join("");
+document.getElementById("learn-sections").innerHTML=SECTIONS.map(secCard).join("");
+
+function openSection(id){
+  if(id==="words"){ showView("words"); return; }
+  currentSection=id;
+  const s=SECTIONS.find(x=>x.id===id);
+  document.getElementById("section-title").textContent=s.icon+" "+s.name;
+  document.getElementById("section-sub").textContent=s.sub;
+  const body=document.getElementById("section-body");
+  document.getElementById("lesson-back").onclick=()=>openSection(id);
+  if(id==="first") body.innerHTML=FIRST.map((f,i)=>rowBtn("first",i,f[0],"Sounds, letters and first words")).join("");
+  else if(id==="placement") body.innerHTML='<div class="card glass"><h3>Find your level</h3><p>Ten questions, no pressure. Your result sets your starting point on My Path — you can retake it any time.</p><button class="btn primary" style="margin-top:.7rem" onclick="startPlacement()">Start the test</button><div id="placement-zone" style="margin-top:1rem"></div></div>';
+  else if(id==="grammar") body.innerHTML=GRAMMAR.map((g,i)=>rowBtn("grammar",i,g[0],LEVELS[g[1]]+" · lesson "+(i+1)+" of 25")).join("");
+  else if(id==="reading") body.innerHTML=READING.map((r,i)=>rowBtn("reading",i,r[0],LEVELS[r[1]]+" · reading text")).join("");
+  else if(id==="listening") body.innerHTML=LISTENING.map((r,i)=>rowBtn("listening",i,r[0],LEVELS[r[1]]+" · listen, then answer")).join("");
+  else if(id==="speaking") body.innerHTML=SPEAKING.map((r,i)=>rowBtn("speaking",i,r[0],LEVELS[r[1]]+" · speaking topic")).join("");
+  else if(id==="writing") body.innerHTML=WRITING.map((r,i)=>rowBtn("writing",i,r[0],LEVELS[r[1]]+" · writing task")).join("");
+  else if(id==="spelling") body.innerHTML=PAIRS.map((p,i)=>rowBtn("spelling",i,p[0]+" / "+p[1],p[2]+" · "+p[3])).join("");
+  else if(id==="idioms") body.innerHTML=IDIOMS.map((x,i)=>'<div class="card glass" style="margin-bottom:.6rem"><h3 style="font-size:1.05rem">'+esc(x.i)+'</h3><p>'+esc(x.m)+'.</p><p class="small" style="font-style:italic">“'+esc(x.ex)+'”</p><button class="btn small" onclick="speakText(SAYREG[regSay(x.ex)])">🔊 Hear it</button> <button class="btn small" onclick="openTutor(\'word\',\''+esc(x.i).replace(/'/g,"\\'")+'\')">Ask AI</button></div>').join("");
+  else if(id==="mistakes") body.innerHTML=MISTAKES.map(m=>'<div class="card glass" style="margin-bottom:.6rem"><p>❌ <s>'+esc(m[0])+'</s></p><p>✅ <strong>'+esc(m[1])+'</strong></p><p class="small">'+esc(m[2])+'</p></div>').join("")+'<div class="card glass"><h3>Check your own writing</h3><p>The AI Tutor catches several of these mistakes automatically.</p><button class="btn primary" style="margin-top:.6rem" onclick="openTutor(\'write\')">Check my writing</button></div>';
+  else if(id==="life") body.innerHTML=LIFE.map((r,i)=>rowBtn("life",i,r[0],"Phrases + a mini dialogue")).join("");
+  showView("section");
+}
+function rowBtn(sec,i,title,sub){
+  const d=isDone(sec,i);
+  return '<button class="itemrow glass press" onclick="openLesson(\''+sec+'\','+i+')"><span><span class="t">'+esc(title)+'</span><br><span class="s">'+esc(sub)+'</span></span>'+(d?'<span class="done">✓ Done</span>':'<span class="chev">›</span>')+'</button>';
+}
+
+/* ================= LESSONS ================= */
+function quizHTML(qid,q,opts,ans,why){
+  return '<div class="qbox glass"><strong>'+esc(q)+'</strong><div>'+opts.map((o,i)=>'<button class="opt" onclick="answerQuiz(this,\''+qid+'\','+i+','+ans+')">'+esc(o)+'</button>').join("")+'</div><div class="feedback" id="fb-'+qid+'">'+esc(why)+'</div></div>';
+}
+const quizState={};
+function answerQuiz(btn,qid,idx,ans){
+  const box=btn.closest(".qbox"); const fb=document.getElementById("fb-"+qid);
+  box.querySelectorAll(".opt").forEach(b=>b.disabled=true);
+  const right=idx===ans;
+  btn.classList.add(right?"right":"wrong");
+  if(!right) box.querySelectorAll(".opt")[ans].classList.add("right");
+  fb.classList.add("show", right?"ok":"no");
+  fb.innerHTML=(right?"✅ Correct! ":"❌ Not quite. ")+fb.textContent;
+  if(right && !quizState[qid]){ quizState[qid]=1; const parts=qid.split("-"); markDone(parts[0], +parts[1], 10); }
+}
+function completeBtn(sec,i,label){
+  return isDone(sec,i)?'<p class="small" style="margin-top:1rem">✓ Completed — well done!</p>':'<button class="btn primary" style="margin-top:1rem" onclick="markDone(\''+sec+'\','+i+',10); openLesson(\''+sec+'\','+i+')">'+ (label||"Mark as complete · +10 XP")+'</button>';
+}
+function openLesson(sec,i){
+  const B=document.getElementById("lesson-body");
+  document.getElementById("lesson-back").onclick=()=>openSection(sec==="words"?"words":sec);
+  let h="";
+  if(sec==="first"){ const f=FIRST[i]; h='<span class="lvl">First Steps</span><h2 style="margin:.6rem 0">'+esc(f[0])+'</h2><div class="exbox prose">'+esc(f[1])+'</div><button class="btn" onclick="speakText(SAYREG[regSay(f[1].slice(0,220))])">🔊 Listen</button>'+completeBtn(sec,i); }
+  else if(sec==="grammar"){ const g=GRAMMAR[i]; h='<span class="lvl">'+LEVELS[g[1]]+'</span><h2 style="margin:.6rem 0">'+esc(g[0])+'</h2><p class="prose">'+esc(g[2])+'</p><div class="exbox">'+g[3].split(" · ").map(e=>"<p>• "+esc(e)+"</p>").join("")+'</div><button class="btn" onclick="speakText(SAYREG[regSay(g[3])])">🔊 Hear the examples</button> <button class="btn" onclick="openTutor(\'ask\',\'Explain simply: '+esc(g[0]).replace(/'/g,"")+'\')">🤖 Ask the AI to explain</button>'+quizHTML("grammar-"+i,g[4],g[5],g[6],g[7])+completeBtn(sec,i); }
+  else if(sec==="reading"){ const r=READING[i]; h='<span class="lvl">'+LEVELS[r[1]]+'</span><h2 style="margin:.6rem 0">'+esc(r[0])+'</h2><p class="prose">'+esc(r[2])+'</p><button class="btn" onclick="speakText(SAYREG[regSay(r[2])])">🔊 Read it aloud to me</button>'+quizHTML("reading-"+i,r[3],r[4],r[5],"Read the text again and find the answer in it.")+completeBtn(sec,i); }
+  else if(sec==="listening"){ const r=LISTENING[i]; h='<span class="lvl">'+LEVELS[r[1]]+'</span><h2 style="margin:.6rem 0">'+esc(r[0])+'</h2><p class="prose">Listen first — try not to read. Then answer the question. You can reveal the transcript afterwards.</p><button class="btn primary" onclick="speakText(SAYREG[regSay(r[2])])">▶ Play the dialogue</button> <button class="btn" onclick="document.getElementById(\'transcript\').classList.toggle(\'hidden\')">Show transcript</button><div id="transcript" class="exbox hidden prose">'+esc(r[2])+'</div>'+quizHTML("listening-"+i,r[3],r[4],r[5],"Check the transcript if you need to.")+completeBtn(sec,i); }
+  else if(sec==="speaking"){ const r=SPEAKING[i]; h='<span class="lvl">'+LEVELS[r[1]]+'</span><h2 style="margin:.6rem 0">'+esc(r[0])+'</h2><h3 style="margin:.8rem 0 .3rem">Your tasks</h3><ul class="prose">'+r[2].map(p=>"<li>"+esc(p)+"</li>").join("")+'</ul><h3 style="margin:.8rem 0 .3rem">Useful phrases</h3><div class="exbox">'+r[3].map(p=>"<p>• "+esc(p)+"</p>").join("")+'</div><button class="btn coral" onclick="openTutor(\'speak\')">🎙 Practise with the AI Tutor</button> <button class="btn" onclick="speakText(SAYREG[regSay(r[3].join(". "))])">🔊 Hear the phrases</button>'+completeBtn(sec,i); }
+  else if(sec==="writing"){ const r=WRITING[i]; h='<span class="lvl">'+LEVELS[r[1]]+'</span><h2 style="margin:.6rem 0">'+esc(r[0])+'</h2><p class="prose">'+esc(r[2])+'</p><div class="exbox"><strong>Tip:</strong> '+esc(r[3])+'</div><h3 style="margin:.8rem 0 .3rem">Model answer</h3><div class="exbox prose">'+esc(r[4])+'</div><p class="prose">Now write your own version, then let the AI check it:</p><button class="btn coral" onclick="openTutor(\'write\')">✍️ Check my writing with AI</button>'+completeBtn(sec,i); }
+  else if(sec==="spelling"){ const p=PAIRS[i]; h='<span class="lvl">Spelling Pairs</span><h2 style="margin:.6rem 0">'+esc(p[0])+" / "+esc(p[1])+'</h2><div class="exbox prose"><p><strong>'+esc(p[0])+'</strong> — '+esc(p[2])+'</p><p><strong>'+esc(p[1])+'</strong> — '+esc(p[3])+'</p></div>'+quizHTML("spelling-"+i,"Fill the gap: "+p[4],[p[0],p[1]], (p[5].toLowerCase()===p[0]?0:1), "The correct word is ‘"+p[5]+"’.")+completeBtn(sec,i); }
+  else if(sec==="life"){ const r=LIFE[i]; h='<span class="lvl">Real-Life English</span><h2 style="margin:.6rem 0">'+esc(r[0])+'</h2><h3 style="margin:.8rem 0 .3rem">Say it like this</h3><div class="exbox">'+r[1].map(p=>"<p>• "+esc(p)+"</p>").join("")+'</div><h3 style="margin:.8rem 0 .3rem">Mini dialogue</h3><div class="exbox prose">'+esc(r[2])+'</div><button class="btn" onclick="speakText(SAYREG[regSay(r[2])])">🔊 Hear the dialogue</button> <button class="btn coral" onclick="openTutor(\'chat\')">💬 Practise in chat</button>'+completeBtn(sec,i); }
+  B.innerHTML=h;
+  showView("lesson");
+}
+
+/* Placement */
+let plIdx=0, plScore=0;
+function startPlacement(){
+  plIdx=0; plScore=0; renderPlacementQ();
+}
+function renderPlacementQ(){
+  const z=document.getElementById("placement-zone"); if(!z) return;
+  if(plIdx>=PLACEMENT.length){
+    const lvl= plScore<=2?0 : plScore<=4?1 : plScore<=6?2 : plScore<=7?3 : plScore<=8?4 : 5;
+    S.level=lvl; save();
+    z.innerHTML='<div class="exbox"><h3>Your level: '+LEVELS[lvl]+'</h3><p>You scored '+plScore+' / '+PLACEMENT.length+'. Your path now starts at '+LEVELS[lvl]+' — but every lesson stays open to you.</p><button class="btn primary" onclick="showView(\'path\')">Go to My Path</button></div>';
+    addXP(15); return;
+  }
+  const q=PLACEMENT[plIdx];
+  z.innerHTML='<p class="small">Question '+(plIdx+1)+' of '+PLACEMENT.length+'</p><div class="qbox glass" style="margin-top:.4rem"><strong>'+esc(q[0])+'</strong>'+q[1].map((o,i)=>'<button class="opt" onclick="placementAnswer('+i+')">'+esc(o)+'</button>').join("")+'</div>';
+}
+function placementAnswer(i){ if(i===PLACEMENT[plIdx][2]) plScore++; plIdx++; renderPlacementQ(); }
+
+/* ================= PATH ================= */
+function renderPath(){
+  const el=document.getElementById("path-list");
+  let h="";
+  LEVELS.forEach((lv,li)=>{
+    const items=[];
+    GRAMMAR.forEach((g,i)=>{ if(g[1]===li) items.push(["grammar",i,g[0]]); });
+    READING.forEach((r,i)=>{ if(r[1]===li) items.push(["reading",i,"Reading: "+r[0]]); });
+    LISTENING.forEach((r,i)=>{ if(r[1]===li) items.push(["listening",i,"Listening: "+r[0]]); });
+    SPEAKING.forEach((r,i)=>{ if(r[1]===li) items.push(["speaking",i,"Speaking: "+r[0]]); });
+    WRITING.forEach((r,i)=>{ if(r[1]===li) items.push(["writing",i,"Writing: "+r[0]]); });
+    const wordsHere=WORDS.filter(w=>w.lvl===li).length;
+    const doneN=items.filter(it=>isDone(it[0],it[1])).length;
+    h+='<div class="card glass" style="margin-bottom:1rem"><div style="display:flex;align-items:center;gap:.6rem;flex-wrap:wrap"><h3>'+lv+'</h3>'+(S.level===li?'<span class="chip">Your level</span>':"")+'<span class="small">'+doneN+' / '+items.length+' lessons done · '+wordsHere+' words</span></div><div class="bar" style="margin:.6rem 0"><i style="width:'+(items.length?doneN/items.length*100:0)+'%"></i></div>';
+    if(li===0) h+='<button class="itemrow glass press" onclick="openSection(\'first\')"><span><span class="t">First Steps</span><br><span class="s">Start here if English is brand new</span></span><span class="chev">›</span></button>';
+    h+=items.map(it=>rowBtn(it[0],it[1],it[2],lv)).join("");
+    h+='<button class="btn small" onclick="showView(\'words\')">Practise '+lv+' words ('+wordsHere+')</button></div>';
+  });
+  el.innerHTML=h;
+}
+
+/* ================= HOME BITS ================= */
+function renderHomeBits(){
+  const hr=new Date().getHours();
+  const g= hr<12?"Good morning": hr<18?"Good afternoon":"Good evening";
+  document.getElementById("greeting").textContent=g+(S.name?", "+S.name:"")+"! Ready to learn?";
+  const dayIdx=Math.floor(Date.now()/864e5)%WORDS.length;
+  const w=WORDS[dayIdx];
+  document.getElementById("wotd").innerHTML='<p style="font-family:Lora,serif;font-size:1.5rem;font-weight:600">'+esc(w.w)+' <span class="pos" style="color:var(--teal-d);font-size:.8rem;text-transform:uppercase">'+esc(w.pos)+'</span></p><p>'+esc(w.def)+'.</p><p class="small" style="font-style:italic">“'+esc(w.ex)+'”</p><button class="btn small" onclick="speakText(SAYREG[regSay(w.ex)])">🔊 Listen</button> <button class="btn small" onclick="showView(\'words\')">All 135 words</button>';
+  let next=null;
+  outer: for(const [sec,arr] of [["grammar",GRAMMAR],["reading",READING],["listening",LISTENING],["speaking",SPEAKING],["writing",WRITING]]){
+    for(let i=0;i<arr.length;i++){ if(!isDone(sec,i)){ next=[sec,i,arr[i][0]]; break outer; } }
+  }
+  const nb=document.getElementById("next-lesson-btn"), nt=document.getElementById("next-lesson-text");
+  if(next){ nt.textContent="Your next lesson: "+next[2]+"."; nb.onclick=()=>openLesson(next[0],next[1]); }
+  else { nt.textContent="You have finished every lesson — outstanding! Revisit any section to revise."; nb.textContent="Revise lessons"; nb.onclick=()=>showView("learn"); }
+  renderPath(); renderStats();
+}
+
+/* ================= WORDS ================= */
+function renderWords(filter){
+  const g=document.getElementById("word-grid");
+  const list=WORDS.map((w,i)=>[w,i]).filter(([w])=>!filter||w.w.toLowerCase().includes(filter)||w.def.toLowerCase().includes(filter));
+  g.innerHTML=list.map(([w,i])=>'<div class="wordcard glass"><div style="display:flex;align-items:flex-start;gap:.5rem"><div><span class="w">'+esc(w.w)+'</span><br><span class="pos">'+esc(w.pos)+' · '+LEVELS[w.lvl]+'</span></div><span style="margin-left:auto;display:flex;gap:.35rem"><button class="iconbtn" aria-label="Listen to '+esc(w.w)+'" onclick="speakText(SAYREG[regSay(w.w+". "+w.ex)])">🔊</button><button class="iconbtn" aria-label="Ask AI about '+esc(w.w)+'" onclick="openTutor(\'word\',\''+esc(w.w)+'\')">🤖</button></span></div><p class="def">'+esc(w.def)+'.</p><p class="ex">“'+esc(w.ex)+'”</p></div>').join("") || '<p class="small">No words match that search.</p>';
+}
+document.getElementById("word-search").addEventListener("input",e=>renderWords(e.target.value.trim().toLowerCase()));
+let flashIdx=0, flashFlipped=false;
+function startFlash(){
+  const pool=WORDS.map((w,i)=>i); flashIdx=pool[Math.floor(Math.random()*pool.length)]; flashFlipped=false; renderFlash();
+  document.getElementById("flash-zone").scrollIntoView({behavior:"smooth", block:"center"});
+}
+function renderFlash(){
+  const w=WORDS[flashIdx];
+  document.getElementById("flash-zone").innerHTML='<div class="flash glass" onclick="flipFlash()" role="button" aria-label="Flashcard — tap to flip"><span class="small">'+(flashFlipped?"Meaning & example":"Tap to reveal")+'</span>'+(flashFlipped?'<div class="fw" style="font-size:1.3rem">'+esc(w.def)+'</div><p style="font-style:italic;color:var(--muted)">“'+esc(w.ex)+'”</p>':'<div class="fw">'+esc(w.w)+'</div><span class="pos" style="color:var(--teal-d);font-weight:700;text-transform:uppercase;font-size:.8rem">'+esc(w.pos)+'</span>')+'<div style="margin-top:1rem;display:flex;gap:.5rem" onclick="event.stopPropagation()"><button class="btn small" onclick="speakText(SAYREG[regSay(w.w)])">🔊 Say it</button><button class="btn small primary" onclick="nextFlash()">Next card →</button></div></div>';
+}
+function flipFlash(){ flashFlipped=!flashFlipped; if(flashFlipped) addXP(2); renderFlash(); }
+function nextFlash(){ flashIdx=Math.floor(Math.random()*WORDS.length); flashFlipped=false; renderFlash(); }
+
+/* ================= PRACTICE ================= */
+function newSentence(){ document.getElementById("prac-sentence").textContent=SENTENCES[Math.floor(Math.random()*SENTENCES.length)]; document.getElementById("prac-result").innerHTML=""; }
+document.getElementById("prac-mic").addEventListener("click",function(){
+  const target=document.getElementById("prac-sentence").textContent;
+  listen(this,heard=>{
+    if(!heard) return;
+    const norm=s=>s.toLowerCase().replace(/[^a-z0-9 ]/g,"").split(/\s+/).filter(Boolean);
+    const t=norm(target), h=norm(heard);
+    const hit=t.filter(w=>h.includes(w)).length; const pct=Math.round(hit/t.length*100);
+    document.getElementById("prac-result").innerHTML='<div class="result-box glass"><p><strong>You said:</strong> “'+esc(heard)+'”</p><p><strong>Score: '+pct+'%</strong> — '+(pct>=85?"Excellent pronunciation!":pct>=60?"Good effort — listen once more and copy the rhythm.":"Listen to the model, then try again slowly.")+'</p></div>';
+    if(pct>=60) addXP(10);
+  });
+});
+
+/* ================= SEARCH ================= */
+document.getElementById("global-search").addEventListener("input",e=>{
+  const q=e.target.value.trim().toLowerCase(); const z=document.getElementById("search-results");
+  if(q.length<2){ z.innerHTML=""; return; }
+  let out=[];
+  GRAMMAR.forEach((g,i)=>{ if(g[0].toLowerCase().includes(q)) out.push('<button class="itemrow glass press" onclick="openLesson(\'grammar\','+i+')"><span><span class="t">'+esc(g[0])+'</span><br><span class="s">Grammar</span></span><span class="chev">›</span></button>'); });
+  WORDS.forEach((w,i)=>{ if(w.w.includes(q)||w.def.toLowerCase().includes(q)) out.push('<button class="itemrow glass press" onclick="showView(\'words\')"><span><span class="t">'+esc(w.w)+'</span><br><span class="s">Word · '+esc(w.def)+'</span></span><span class="chev">›</span></button>'); });
+  IDIOMS.forEach(x=>{ if(x.i.includes(q)||x.m.includes(q)) out.push('<button class="itemrow glass press" onclick="openSection(\'idioms\')"><span><span class="t">'+esc(x.i)+'</span><br><span class="s">Idiom · '+esc(x.m)+'</span></span><span class="chev">›</span></button>'); });
+  z.innerHTML= out.length? out.slice(0,10).join("") : '<p class="small">Nothing found — try the AI Tutor’s Word Helper.</p>';
+});
+
+/* ================= PROGRESS ================= */
+function renderProgress(){
+  const total=GRAMMAR.length+READING.length+LISTENING.length+SPEAKING.length+WRITING.length+PAIRS.length+FIRST.length+LIFE.length;
+  const doneN=Object.keys(S.done).length;
+  const per=LEVELS.map((lv,li)=>{
+    const items=[]; GRAMMAR.forEach((g,i)=>{if(g[1]===li)items.push(["grammar",i]);}); READING.forEach((r,i)=>{if(r[1]===li)items.push(["reading",i]);}); LISTENING.forEach((r,i)=>{if(r[1]===li)items.push(["listening",i]);}); SPEAKING.forEach((r,i)=>{if(r[1]===li)items.push(["speaking",i]);}); WRITING.forEach((r,i)=>{if(r[1]===li)items.push(["writing",i]);});
+    const d=items.filter(it=>isDone(it[0],it[1])).length;
+    return '<div style="margin:.7rem 0"><div style="display:flex;justify-content:space-between"><strong>'+lv+'</strong><span class="small">'+d+' / '+items.length+'</span></div><div class="bar"><i style="width:'+(items.length?d/items.length*100:0)+'%"></i></div></div>';
+  }).join("");
+  document.getElementById("progress-body").innerHTML=
+   '<div class="grid c3 grid c2" style="margin-bottom:1rem"><div class="card glass"><h3>'+S.xp+' XP</h3><p>Total experience</p></div><div class="card glass"><h3>'+S.streak+' days</h3><p>Current streak</p></div><div class="card glass"><h3>'+doneN+' / '+total+'</h3><p>Lessons completed</p></div></div>'+
+   '<div class="card glass"><h3>By level</h3>'+per+'</div>'+
+   '<div class="card glass" style="margin-top:1rem"><h3>Keep going</h3><p>'+(S.level!==null&&S.level!==undefined?"Your placement level: <strong>"+LEVELS[S.level]+"</strong>. ":"Take the placement test to set your level. ")+'Finishing a lesson, a quiz or a spoken answer earns XP and keeps your streak alive.</p><div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem"><button class="btn primary" onclick="showView(\'path\')">Open My Path</button><button class="btn" onclick="openSection(\'placement\')">Retake placement</button></div></div>';
+}
+
+/* ================= ME ================= */
+function saveName(){ S.name=document.getElementById("me-name").value.trim(); save(); renderHomeBits(); toast("Saved — hello, "+(S.name||"learner")+"!"); }
+function saveRate(){ S.rate=document.getElementById("voice-rate").value; save(); }
+function resetProgress(){ S.xp=0; S.streak=0; S.done={}; S.level=null; S.todayXP=0; S.lastDay=""; save(); renderHomeBits(); document.getElementById("reset-note").innerHTML='<p class="small" style="margin-top:.6rem">Done — your progress has been cleared. Fresh start!</p>'; }
+
+/* ================= AI TUTOR ================= */
+function openTutor(tab, prefill){
+  document.getElementById("tutor").classList.add("open");
+  tutorTab(tab||"speak");
+  if(prefill){
+    if(tab==="word"){ document.getElementById("word-input").value=prefill; wordHelp(); }
+    if(tab==="ask"){ document.getElementById("ask-input").value=prefill; askTutor(); }
+  }
+  if(tab==="chat" && !document.getElementById("chat-log").children.length) chatStart();
+}
+function closeTutor(){ document.getElementById("tutor").classList.remove("open"); if("speechSynthesis" in window) speechSynthesis.cancel(); }
+function tutorTab(t){
+  document.querySelectorAll("#tutor-tabs button").forEach(b=>b.classList.toggle("act", b.dataset.tab===t));
+  document.querySelectorAll(".tpanel").forEach(p=>p.classList.add("hidden"));
+  document.getElementById("tp-"+t).classList.remove("hidden");
+  if(t==="chat" && !document.getElementById("chat-log").children.length) chatStart();
+}
+function correctSentence(text){
+  let t=text.trim(); const fixes=[];
+  const swaps=[[/\bi\b/g,"I","Write ‘I’ with a capital letter."],[/\bi am agree\b/gi,"I agree","‘Agree’ is a verb: say ‘I agree’, not ‘I am agree’."],[/\bbuyed\b/gi,"bought","Buy is irregular: buy → bought."],[/\bgoed\b/gi,"went","Go is irregular: go → went."],[/\bdon't\b/gi,"don't",""],[/\bshe don't\b/gi,"she doesn't","With she/he/it, use ‘doesn't’."],[/\bhe don't\b/gi,"he doesn't","With she/he/it, use ‘doesn't’."],[/\bmore better\b/gi,"better","‘Better’ is already comparative — no ‘more’."],[/\bmore taller\b/gi,"taller","Use -er OR more, never both."],[/\ban advice\b/gi,"some advice","‘Advice’ is uncountable: ‘some advice’."],[/\bdiscuss about\b/gi,"discuss","‘Discuss’ needs no ‘about’."],[/\bwent to home\b/gi,"went home","No ‘to’ before ‘home’."],[/\bmarry with\b/gi,"marry","‘Marry’ takes no ‘with’."],[/\bcan to\b/gi,"can","After can, use the base verb with no ‘to’."],[/\bdid not went\b/gi,"did not go","After ‘did’, use the base verb."]];
+  swaps.forEach(([re,rep,note])=>{ if(re.test(t)){ t=t.replace(re,rep); if(note) fixes.push(note); } });
+  if(t && /^[a-z]/.test(t)){ t=t[0].toUpperCase()+t.slice(1); fixes.push("Start sentences with a capital letter."); }
+  if(t && !/[.!?]$/.test(t)){ t+="."; fixes.push("End your sentence with a full stop."); }
+  return {text:t, fixes};
+}
+function tutorReply(heard){
+  const low=heard.toLowerCase();
+  const corr=correctSentence(heard);
+  let reply;
+  if(/\b(hello|hi|good morning|good afternoon)\b/.test(low)) reply="Hello! Lovely to meet you. How are you today?";
+  else if(/how are you/.test(low)) reply="I'm very well, thank you! And you — how is your day going?";
+  else if(/my name is/.test(low)) reply="Pleased to meet you! That's a great introduction. Where do you live?";
+  else if(/where|live/.test(low)) reply="Interesting! Tell me a little more about the place where you live.";
+  else if(/thank/.test(low)) reply="You're very welcome. That's excellent manners — well done!";
+  else if(/weather/.test(low)) reply="Talking about the weather — very British! Is it sunny where you are today?";
+  else if(/tea|coffee/.test(low)) reply="A proper cup of tea solves almost everything in Britain. Do you take milk in yours?";
+  else if(/\b(work|job)\b/.test(low)) reply="Work is a great topic. Tell me: what do you do, or what would you like to do?";
+  else if(/\b(like|love|enjoy)\b/.test(low)) reply="Wonderful — talking about things you enjoy is the best way to build fluency. What else do you enjoy?";
+  else if(/\?/.test(heard)) reply="Great question — asking questions is how conversations grow. Here's my short answer: keep it simple, and keep practising a little every day.";
+  else reply="Well said! I understood you clearly. Try adding one more detail — where, when, or why — to make your English even richer.";
+  return {reply, corr};
+}
+function handleSpoken(heard, resultEl){
+  const {reply, corr}=tutorReply(heard);
+  let h='<p><strong>You said:</strong> “'+esc(heard)+'”</p>';
+  if(corr.text.toLowerCase()!==heard.trim().toLowerCase()) h+='<div class="corr">✍️ <strong>Polished:</strong> “'+esc(corr.text)+'”</div>';
+  if(corr.fixes.length) h+='<p class="small">'+corr.fixes.map(esc).join(" ")+'</p>';
+  h+='<p style="margin-top:.5rem"><strong>Tutor:</strong> '+esc(reply)+'</p><button class="btn small" onclick="speakText(SAYREG[regSay(reply)])">🔊 Hear the reply again</button>';
+  resultEl.innerHTML=h;
+  speakText(reply);
+  addXP(10);
+}
+document.getElementById("home-mic").addEventListener("click",function(){ openTutor("speak"); startTutorMic(); });
+document.getElementById("dock-mic").addEventListener("click",function(){ openTutor("speak"); startTutorMic(); });
+document.getElementById("tutor-mic").addEventListener("click",startTutorMic);
+function startTutorMic(){
+  const btn=document.getElementById("tutor-mic"); const st=document.getElementById("mic-status");
+  st.textContent="LISTENING… SPEAK NOW";
+  listen(btn,heard=>{ st.textContent="TAP TO SPEAK"; if(heard) handleSpoken(heard, document.getElementById("speak-result")); });
+}
+function typedSpeak(){
+  const v=document.getElementById("speak-type").value.trim(); if(!v) return;
+  document.getElementById("speak-type").value="";
+  handleSpoken(v, document.getElementById("speak-result"));
+}
+document.getElementById("speak-type").addEventListener("keydown",e=>{ if(e.key==="Enter") typedSpeak(); });
+
+function askTutor(){
+  const q=document.getElementById("ask-input").value.trim(); if(!q) return;
+  const low=q.toLowerCase(); let a=null, link=null;
+  const find=(arr,keys)=>arr.findIndex(g=>keys.some(k=>g[0].toLowerCase().includes(k)));
+  if(/present perfect/.test(low)){ const i=find(GRAMMAR,["present perfect —"]); a=GRAMMAR[i][2]+" Example: "+GRAMMAR[i][3]; link=["grammar",i]; }
+  else if(/present simple|routine/.test(low)){ const i=1; a=GRAMMAR[i][2]+" Example: "+GRAMMAR[i][3]; link=["grammar",i]; }
+  else if(/past simple|yesterday|irregular/.test(low)){ const i=4; a=GRAMMAR[i][2]+" Example: "+GRAMMAR[i][3]; link=["grammar",i]; }
+  else if(/article|\ba\b|\bthe\b/.test(low)){ const i=5; a=GRAMMAR[i][2]+" Example: "+GRAMMAR[i][3]; link=["grammar",i]; }
+  else if(/comparative|bigger|better/.test(low)){ const i=8; a=GRAMMAR[i][2]+" Example: "+GRAMMAR[i][3]; link=["grammar",i]; }
+  else if(/conditional|if i|would/.test(low)){ const i=15; a=GRAMMAR[i][2]+" Example: "+GRAMMAR[i][3]; link=["grammar",i]; }
+  else if(/passive/.test(low)){ const i=22; a=GRAMMAR[i][2]+" Example: "+GRAMMAR[i][3]; link=["grammar",i]; }
+  else if(/future|going to|will/.test(low)){ const i=12; a=GRAMMAR[i][2]+" Example: "+GRAMMAR[i][3]; link=["grammar",i]; }
+  else {
+    const w=WORDS.find(x=>low.includes(x.w)); const id=IDIOMS.find(x=>low.includes(x.i.split(" ")[0])&&low.includes(x.i));
+    if(w) a="‘"+w.w+"’ ("+w.pos+") means: "+w.def+". Example: "+w.ex;
+    else if(id) a="The idiom ‘"+id.i+"’ means: "+id.m+". Example: "+id.ex;
+  }
+  if(!a) a="Good question! Here's my best short answer: break it into small pieces, learn one clear rule, then practise with two examples of your own. Try asking me about a tense (for example ‘present perfect’), articles, conditionals, or any single word — or open the Grammar section for the full lesson.";
+  document.getElementById("ask-result").innerHTML='<p>'+esc(a)+'</p>'+(link?'<button class="btn small primary" style="margin-top:.6rem" onclick="closeTutor(); openLesson(\'grammar\','+link[1]+')">Open the full lesson</button>':"")+' <button class="btn small" style="margin-top:.6rem" onclick="speakText(SAYREG[regSay(a)])">🔊 Listen</button>';
+  addXP(2);
+}
+document.getElementById("ask-input").addEventListener("keydown",e=>{ if(e.key==="Enter") askTutor(); });
+
+function checkWriting(){
+  const v=document.getElementById("write-input").value.trim();
+  const z=document.getElementById("write-result");
+  if(!v){ z.innerHTML="<p>Write something first — even one sentence is enough.</p>"; return; }
+  const corr=correctSentence(v);
+  const words=v.split(/\s+/).length;
+  let issues=corr.fixes.slice();
+  if(/\s{2,}/.test(v)) issues.push("Watch out for double spaces.");
+  if(!/[.!?]/.test(v)) issues.push("Add punctuation so the reader can breathe.");
+  const score=Math.max(40, 100 - issues.length*12);
+  z.innerHTML='<p><strong>Score: '+score+' / 100</strong> · '+words+' words</p>'+
+   (issues.length? '<ul class="prose">'+issues.map(i=>"<li>"+esc(i)+"</li>").join("")+"</ul>" : "<p>✅ No problems found — clean, correct writing. Well done!</p>")+
+   '<div class="corr">✍️ <strong>Corrected version:</strong><br>'+esc(corr.text)+'</div>'+
+   '<button class="btn small" onclick="speakText(SAYREG[regSay(corr.text)])">🔊 Hear it read aloud</button>';
+  addXP(10);
+}
+
+const CHAT_FLOW=[
+ "Hello! I'm your AI tutor. Let's chat in English. First — what's your name, and where are you from?",
+ "Lovely! What do you do — do you work, study, or something else?",
+ "Interesting. And what do you enjoy doing in your free time?",
+ "That sounds great. What did you do last weekend?",
+ "Nice! One more: what would you like to do this weekend?",
+ "Brilliant chatting with you — your English is clear and friendly. Shall we talk again tomorrow? You earned +10 XP for this chat!"
+];
+function chatStart(){
+  S.chatStep=0;
+  document.getElementById("chat-log").innerHTML="";
+  chatAdd("tutor", CHAT_FLOW[0]);
+}
+function chatAdd(who,text){
+  const log=document.getElementById("chat-log");
+  const d=document.createElement("div"); d.className="msg "+(who==="me"?"me":"tutor"); d.textContent=text;
+  log.appendChild(d); log.scrollTop=log.scrollHeight;
+}
+function chatSend(){
+  const inp=document.getElementById("chat-input"); const v=inp.value.trim(); if(!v) return;
+  inp.value=""; chatAdd("me", v);
+  const corr=correctSentence(v);
+  setTimeout(()=>{
+    if(corr.text.toLowerCase()!==v.toLowerCase()) chatAdd("tutor","Quick polish: “"+corr.text+"”");
+    S.chatStep=Math.min(S.chatStep+1, CHAT_FLOW.length-1);
+    const reply=CHAT_FLOW[S.chatStep];
+    chatAdd("tutor", reply); speakText(reply);
+    if(S.chatStep===CHAT_FLOW.length-1) addXP(10); else addXP(2);
+    save();
+  },450);
+}
+document.getElementById("chat-input").addEventListener("keydown",e=>{ if(e.key==="Enter") chatSend(); });
+function chatMic(){
+  listen(document.querySelector("#tp-chat .btn"), heard=>{ if(heard){ document.getElementById("chat-input").value=heard; chatSend(); } });
+}
+
+function wordHelp(){
+  const q=document.getElementById("word-input").value.trim().toLowerCase();
+  const z=document.getElementById("word-result");
+  if(!q){ z.innerHTML="<p>Type a word or idiom first.</p>"; return; }
+  const w=WORDS.find(x=>x.w===q)||WORDS.find(x=>x.w.includes(q));
+  const id=IDIOMS.find(x=>x.i===q)||IDIOMS.find(x=>x.i.includes(q));
+  if(w){
+    const rel=WORDS.filter(x=>x.lvl===w.lvl&&x.w!==w.w).slice(0,3);
+    z.innerHTML='<p style="font-family:Lora,serif;font-size:1.4rem"><strong>'+esc(w.w)+'</strong> <span class="small">'+esc(w.pos)+' · '+LEVELS[w.lvl]+'</span></p><p>'+esc(w.def)+'.</p><p style="font-style:italic">“'+esc(w.ex)+'”</p><p class="small">More words at this level: '+rel.map(r=>esc(r.w)).join(", ")+'.</p><button class="btn small" onclick="speakText(SAYREG[regSay(w.w+". "+w.ex)])">🔊 Listen</button>';
+  } else if(id){
+    z.innerHTML='<p style="font-family:Lora,serif;font-size:1.3rem"><strong>'+esc(id.i)+'</strong> <span class="small">idiom</span></p><p>'+esc(id.m)+'.</p><p style="font-style:italic">“'+esc(id.ex)+'”</p><button class="btn small" onclick="speakText(SAYREG[regSay(id.ex)])">🔊 Listen</button>';
+  } else {
+    z.innerHTML='<p>I don\'t have “'+esc(q)+'” in the Hub\'s 135 words or idiom list yet. Try one of these: brilliant, queue, convenient, knackered, break the ice. Or ask me in the Ask tab — I\'ll do my best!</p>';
+  }
+  addXP(2);
+}
+document.getElementById("word-input").addEventListener("keydown",e=>{ if(e.key==="Enter") wordHelp(); });
+
+/* ================= INIT ================= */
+document.getElementById("me-name").value=S.name||"";
+document.getElementById("voice-rate").value=S.rate||"1";
+newSentence();
+renderWords("");
+renderHomeBits();
+showView("home");
+save();
+</script>
 </body>
 </html>
