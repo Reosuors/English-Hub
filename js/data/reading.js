@@ -1,0 +1,103 @@
+// Reading Practice texts. Words in [[double brackets]] are highlighted; their meanings are in "words".
+export const READINGS = [
+{ id: "my-day", title: "My Day", level: "E1", type: "Short text", minutes: 2,
+  text: "My name is Sami. I live in a small [[flat]] in Oldham with my wife and two children. I get up at seven o'clock every day. I have tea and toast for breakfast. Then I take the children to school. After that, I go to college. I study English on Monday, Tuesday and Wednesday. My teacher is very kind. In the afternoon, I work in a [[warehouse]]. I come home at six. In the evening, we eat dinner together and watch TV. I go to bed at eleven. I am always [[tired]], but I am happy.",
+  words: { flat: "a home on one floor of a building", warehouse: "a big building where things are kept before they go to shops", tired: "needing rest or sleep" },
+  questions: [
+    { q: "Where does Sami live?", a: ["In a house in London", "In a flat in Oldham", "In a flat in Manchester"], c: 1, e: "\"I live in a small flat in Oldham.\"" },
+    { q: "What does Sami have for breakfast?", a: ["Coffee and eggs", "Tea and toast", "Nothing"], c: 1, e: "\"I have tea and toast for breakfast.\"" },
+    { q: "How many days a week does he study English?", a: ["Two", "Three", "Five"], c: 1, e: "Monday, Tuesday and Wednesday = three days." },
+    { q: "Where does he work?", a: ["In a school", "In a warehouse", "At the college"], c: 1, e: "\"In the afternoon, I work in a warehouse.\"" }
+  ] },
+{ id: "notice", title: "A Notice at the Leisure Centre", level: "E1", type: "Notice", minutes: 2,
+  text: "OLDHAM LEISURE CENTRE. Opening times: Monday to Friday, 6 am to 10 pm. Saturday and Sunday, 8 am to 6 pm. Swimming pool: Women-only swimming is on Wednesday evenings from 7 pm to 9 pm. Children under 8 must swim with an adult. Please [[shower]] before you swim. Prices: Adults £4.50. Children £2.50. Free for children under 3. [[Lockers]] need a £1 coin. You get your coin back. No food or drink near the pool.",
+  words: { shower: "to wash your body under running water", lockers: "small cupboards with a lock where you can leave your things" },
+  questions: [
+    { q: "What time does the centre close on Saturday?", a: ["6 pm", "10 pm", "8 pm"], c: 0, e: "Saturday and Sunday: 8 am to 6 pm." },
+    { q: "When is women-only swimming?", a: ["Monday mornings", "Wednesday evenings", "Sunday afternoons"], c: 1, e: "\"Women-only swimming is on Wednesday evenings.\"" },
+    { q: "How much does a 2-year-old child pay?", a: ["£2.50", "£4.50", "Nothing"], c: 2, e: "\"Free for children under 3.\"" },
+    { q: "What do you need for a locker?", a: ["A £1 coin", "A card", "£4.50"], c: 0, e: "\"Lockers need a £1 coin. You get your coin back.\"" }
+  ] },
+{ id: "email-friend", title: "An Email from Maria", level: "E2", type: "Email", minutes: 3,
+  text: "Hi Leila, How are you? I'm sorry I didn't reply sooner. Last week was very busy. We moved to a new flat in Chadderton! It's bigger than our old flat and it has a small garden. The kids love it. The only problem is the bus. Now I need to take two buses to get to college, so the [[journey]] takes 50 minutes. On Saturday, we're having a small party to celebrate. Can you come? It starts at 4 pm. Please bring your children too. My new address is 14 Park Road. Let me know if you can come. Take care, Maria",
+  words: { journey: "travelling from one place to another", celebrate: "to do something nice because of a happy event" },
+  questions: [
+    { q: "Why didn't Maria reply sooner?", a: ["She was ill.", "She was busy moving house.", "She was on holiday."], c: 1, e: "\"Last week was very busy. We moved to a new flat.\"" },
+    { q: "What is better about the new flat?", a: ["It's cheaper.", "It's bigger and has a garden.", "It's near the college."], c: 1, e: "\"It's bigger than our old flat and it has a small garden.\"" },
+    { q: "What is the problem with the new flat?", a: ["The journey to college is longer.", "The neighbours are noisy.", "It is too small."], c: 0, e: "She needs two buses and the journey takes 50 minutes." },
+    { q: "What does Maria want Leila to do?", a: ["Help her move", "Come to a party on Saturday", "Call her on Sunday"], c: 1, e: "\"On Saturday, we're having a small party… Can you come?\"" }
+  ] },
+{ id: "gp-letter", title: "A Letter from the GP Surgery", level: "E2", type: "Letter", minutes: 3,
+  text: "Dear Mr Hassan, Your [[appointment]] with Dr Patel is on Tuesday 14 March at 10.20 am. Please arrive 10 minutes early. If you cannot come, please call us on 0161 555 0192 at least 24 hours before your appointment, so we can give it to another [[patient]]. Please bring a list of any medicines you take. If you need an [[interpreter]], tell the receptionist when you call. You can also book appointments and order repeat [[prescriptions]] online with the NHS App. Yours sincerely, Greenfield Medical Centre",
+  words: { appointment: "a fixed time to see someone, for example a doctor", patient: "a person who gets care from a doctor or nurse", interpreter: "a person who changes spoken words from one language to another", prescriptions: "a doctor's written orders for medicine" },
+  questions: [
+    { q: "What time should Mr Hassan arrive?", a: ["10.20 am", "10.10 am", "10.30 am"], c: 1, e: "The appointment is at 10.20, and he should arrive 10 minutes early." },
+    { q: "What should he do if he can't come?", a: ["Do nothing", "Call at least 24 hours before", "Send an email after the appointment"], c: 1, e: "\"Please call us… at least 24 hours before your appointment.\"" },
+    { q: "What should he bring?", a: ["His passport", "A list of his medicines", "Money"], c: 1, e: "\"Please bring a list of any medicines you take.\"" },
+    { q: "How can he get an interpreter?", a: ["Tell the receptionist when he calls", "Bring a friend", "Use the NHS App"], c: 0, e: "\"If you need an interpreter, tell the receptionist when you call.\"" }
+  ] },
+{ id: "community-garden", title: "The Community Garden", level: "E3", type: "Article", minutes: 4,
+  text: "Three years ago, the land behind Hollins Road was full of rubbish. Today, it is one of the greenest places in the town. A group of [[volunteers]] decided to turn it into a community garden, and now more than sixty families grow fruit and vegetables there. \"At first, people didn't believe it would work,\" says Amira, who started the project. \"But once they saw the first tomatoes, everyone wanted to help.\" The garden has become a place where neighbours from different countries meet and share recipes. Older people teach children how to plant seeds, and the college runs free English classes there in the summer. The project has also won a local award for improving the [[environment]]. However, there are still [[challenges]]. The volunteers need more money to repair the fence, and they are looking for people who can help on weekdays.",
+  words: { volunteers: "people who work without being paid, to help others", environment: "the natural world around us", challenges: "difficult things that need effort" },
+  questions: [
+    { q: "What was the land like three years ago?", a: ["A car park", "Full of rubbish", "A farm"], c: 1, e: "\"Three years ago, the land… was full of rubbish.\"" },
+    { q: "What changed people's minds about the project?", a: ["A newspaper story", "Seeing the first tomatoes", "Money from the council"], c: 1, e: "\"Once they saw the first tomatoes, everyone wanted to help.\"" },
+    { q: "Which sentence is TRUE?", a: ["Only older people use the garden.", "The college runs free classes there in summer.", "The garden doesn't need any help."], c: 1, e: "\"The college runs free English classes there in the summer.\"" },
+    { q: "What do the volunteers need now?", a: ["More land", "Money and weekday helpers", "New seeds"], c: 1, e: "They need money to repair the fence and people to help on weekdays." }
+  ] },
+{ id: "job-advert", title: "Job Advert: Customer Assistant", level: "E3", type: "Advert", minutes: 3,
+  text: "CUSTOMER ASSISTANT — FreshFood Supermarket, Oldham. Part-time, 20 hours per week (including some weekends). £12.21 per hour. We are looking for a friendly and [[reliable]] person to join our team. You will help customers, fill shelves and work on the tills. No experience is needed because full training is provided. You must be good at working in a team and able to communicate clearly with customers. Benefits: 10% staff discount, free uniform, and opportunities for [[promotion]]. To apply, complete the online application form by 30 November. Successful [[applicants]] will be invited to an interview in the first week of December.",
+  words: { reliable: "someone you can trust; they do what they say", promotion: "moving to a better or higher job", applicants: "people who ask for a job" },
+  questions: [
+    { q: "How many hours a week is the job?", a: ["12", "20", "40"], c: 1, e: "\"Part-time, 20 hours per week.\"" },
+    { q: "Do you need experience?", a: ["Yes, two years", "No, training is given", "Only for weekends"], c: 1, e: "\"No experience is needed because full training is provided.\"" },
+    { q: "Which is NOT a benefit of the job?", a: ["Staff discount", "Free uniform", "A company car"], c: 2, e: "The benefits are a discount, a uniform and promotion opportunities." },
+    { q: "When are the interviews?", a: ["By 30 November", "In the first week of December", "Every weekend"], c: 1, e: "\"Successful applicants will be invited to an interview in the first week of December.\"" }
+  ] },
+{ id: "first-winter", title: "My First Winter in England", level: "E3", type: "Story", minutes: 4,
+  text: "When I arrived in Manchester in October, I thought I was ready for the cold. I had bought a thick coat in a market before I left home. But nobody had told me about the rain. It rained almost every day, and by four o'clock in the afternoon it was already dark. For the first few weeks, I felt lonely and [[homesick]]. I missed the sun and my family's cooking. Then my neighbour, an old man called Derek, knocked on my door with a cup of tea. He showed me how to use the heating and told me about a [[drop-in]] centre where I could practise English. Slowly, things got better. I learnt that British people talk about the weather all the time, and that it's a good way to start a conversation. Now, when someone says \"Lovely weather, isn't it?\" on a rainy day, I know they are joking, and I laugh too.",
+  words: { homesick: "sad because you are far from your home and family", "drop-in": "a place you can visit without an appointment" },
+  questions: [
+    { q: "What surprised the writer about the weather?", a: ["The snow", "The rain and early darkness", "The heat"], c: 1, e: "\"Nobody had told me about the rain… by four o'clock… it was already dark.\"" },
+    { q: "How did the writer feel at first?", a: ["Excited", "Lonely and homesick", "Angry"], c: 1, e: "\"For the first few weeks, I felt lonely and homesick.\"" },
+    { q: "How did Derek help?", a: ["He gave the writer a job.", "He showed the heating and told them about a centre.", "He drove the writer to college."], c: 1, e: "He showed how to use the heating and told the writer about a drop-in centre." },
+    { q: "Why does the writer laugh at \"Lovely weather, isn't it?\" on a rainy day?", a: ["Because it's a joke", "Because it's rude", "Because they don't understand"], c: 0, e: "People say it as a joke when the weather is bad." }
+  ] },
+{ id: "screen-time", title: "Are Screens Bad for Sleep?", level: "L1", type: "Article", minutes: 5,
+  text: "Many of us check our phones in bed, but research suggests this habit could be [[harming]] our sleep. Phones and tablets give off blue light, which can reduce the amount of melatonin, the hormone that helps us feel sleepy. As a result, people who use screens late at night often take longer to fall asleep. However, some scientists argue that the light itself is not the main problem. Instead, they believe it is the content — exciting games, stressful news or endless social media — that keeps our brains active. Whatever the reason, experts generally agree on a few simple steps. They recommend switching off devices at least an hour before bed, keeping phones out of the bedroom, and replacing screen time with a [[relaxing]] activity such as reading a paper book. Most adults need seven to nine hours of sleep a night, and small changes in our evening [[routine]] can make a significant difference to how we feel the next day.",
+  words: { harming: "damaging; causing problems", melatonin: "a natural chemical in the body that helps you sleep", relaxing: "making you feel calm", routine: "the things you usually do, in the same order" },
+  questions: [
+    { q: "According to the text, what does blue light do?", a: ["It helps us sleep.", "It can reduce melatonin.", "It has no effect."], c: 1, e: "\"Blue light… can reduce the amount of melatonin.\"" },
+    { q: "What do some scientists think is the main problem?", a: ["The content we look at", "The size of the screen", "The bed"], c: 0, e: "\"They believe it is the content… that keeps our brains active.\"" },
+    { q: "Which is one of the experts' recommendations?", a: ["Use your phone until you feel tired", "Switch off devices an hour before bed", "Sleep with the light on"], c: 1, e: "\"switching off devices at least an hour before bed\"" },
+    { q: "What does 'significant' mean in the last sentence?", a: ["Very small", "Important or large enough to notice", "Dangerous"], c: 1, e: "Significant = important or large enough to notice." }
+  ] },
+{ id: "volunteering", title: "Why Volunteering Helps You Too", level: "L1", type: "Article", minutes: 5,
+  text: "Volunteering is usually described as a way of helping others, but it can also bring [[considerable]] benefits to the volunteer. For people who are new to the UK, it can be an excellent way to gain local work experience, which many employers look for on a CV. Volunteers also have the chance to practise English in real situations, from answering the phone in a charity shop to guiding visitors at a museum. Studies have shown that volunteering can improve mental health by reducing feelings of [[isolation]] and giving people a sense of purpose. Furthermore, the contacts you make can lead to job opportunities, as many organisations prefer to hire people they already know and trust. Of course, volunteering takes time, and it is important not to take on more than you can [[manage]], especially if you are also working or studying. Many organisations are flexible and offer roles that need just a few hours a month.",
+  words: { considerable: "large or important", isolation: "being alone and not having contact with other people", manage: "to be able to deal with something" },
+  questions: [
+    { q: "What is the main idea of the text?", a: ["Volunteering only helps other people.", "Volunteering helps the volunteer too.", "Volunteering is too difficult."], c: 1, e: "The text explains the benefits for the volunteer." },
+    { q: "Why can volunteering help people new to the UK find work?", a: ["It pays well.", "It gives local work experience for a CV.", "It is required by law."], c: 1, e: "\"…a way to gain local work experience, which many employers look for on a CV.\"" },
+    { q: "How can volunteering improve mental health?", a: ["By reducing isolation and giving purpose", "By making people rich", "By giving people more free time"], c: 0, e: "\"…reducing feelings of isolation and giving people a sense of purpose.\"" },
+    { q: "What warning does the writer give?", a: ["Don't take on more than you can manage.", "Never volunteer while studying.", "Only volunteer in museums."], c: 0, e: "\"…it is important not to take on more than you can manage.\"" }
+  ] },
+{ id: "four-day-week", title: "The Four-Day Working Week", level: "L2", type: "Opinion article", minutes: 6,
+  text: "In 2022, around sixty British companies took part in what was then the world's largest trial of a four-day working week. Employees were paid their full salary for working roughly eighty per cent of their usual hours, on the [[condition]] that productivity stayed the same. The results were striking: most firms chose to continue with the scheme once the trial had ended, and many reported lower staff turnover and fewer sick days. [[Advocates]] argue that a shorter week could address burnout and help employees balance work with caring responsibilities. Critics, however, remain unconvinced. They point out that the trial involved companies that had volunteered, which may have been unusually well suited to the change. Moreover, it is far from clear how the model would work in sectors such as healthcare or retail, where staff need to be physically present. Rather than a universal solution, the four-day week may prove to be one option among several in a broader move towards more flexible working — its success [[contingent]] on the nature of each job.",
+  words: { condition: "something that must happen before something else is allowed", advocates: "people who publicly support an idea", contingent: "depending on something else" },
+  questions: [
+    { q: "What did employees in the trial receive?", a: ["80% of their salary", "Their full salary for fewer hours", "Extra holidays only"], c: 1, e: "\"Employees were paid their full salary for working roughly eighty per cent of their usual hours.\"" },
+    { q: "Why are critics unconvinced?", a: ["The companies had chosen to take part.", "The trial was too long.", "Workers didn't like it."], c: 0, e: "\"…the trial involved companies that had volunteered, which may have been unusually well suited.\"" },
+    { q: "Which sectors might find the model difficult?", a: ["Software and design", "Healthcare and retail", "Banking"], c: 1, e: "\"…sectors such as healthcare or retail, where staff need to be physically present.\"" },
+    { q: "What is the writer's conclusion?", a: ["The four-day week should be the law.", "It may be one option, depending on the job.", "It has completely failed."], c: 1, e: "\"…one option among several… its success contingent on the nature of each job.\"" },
+    { q: "In the text, 'striking' means…", a: ["very noticeable", "violent", "boring"], c: 0, e: "Striking results = results that are very noticeable or impressive." }
+  ] },
+{ id: "language-learning", title: "Is There a Best Age to Learn a Language?", level: "L2", type: "Article", minutes: 6,
+  text: "It is widely believed that children learn languages more easily than adults, and there is some truth in this. Young children who grow up surrounded by a language often [[acquire]] a native-like accent, something adults rarely achieve. Yet the picture is more complicated than the popular view suggests. Adults typically make faster progress in the early stages, because they can draw on their knowledge of grammar, use learning strategies deliberately and understand abstract explanations. What appears to matter most is not age alone but the quantity and quality of exposure: how much meaningful contact a learner has with the language, and how often they actually use it. Motivation also plays a [[crucial]] role. An adult who needs English to work, study or build a new life may well outperform a teenager who is only studying for a test. The [[implication]] for adult learners is encouraging: while a perfect accent may be out of reach, fluent and accurate communication is entirely achievable at any age.",
+  words: { acquire: "to get or learn something", crucial: "extremely important", implication: "what a fact or idea suggests or means for the future" },
+  questions: [
+    { q: "What do young children often achieve that adults rarely do?", a: ["Faster grammar learning", "A native-like accent", "Better test scores"], c: 1, e: "Children \"often acquire a native-like accent, something adults rarely achieve.\"" },
+    { q: "Why do adults often progress faster at first?", a: ["They have more free time.", "They can use grammar knowledge and strategies.", "They have better memories."], c: 1, e: "\"…they can draw on their knowledge of grammar, use learning strategies deliberately…\"" },
+    { q: "According to the text, what matters most?", a: ["Age alone", "The amount and quality of exposure and use", "Having a good teacher"], c: 1, e: "\"What appears to matter most is… the quantity and quality of exposure.\"" },
+    { q: "What is the writer's message for adult learners?", a: ["It's too late to learn.", "Fluent communication is achievable at any age.", "Only accent matters."], c: 1, e: "\"…fluent and accurate communication is entirely achievable at any age.\"" }
+  ] }
+];
