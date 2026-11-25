@@ -1,0 +1,51 @@
+{
+  "appId": "com.ahmad.englishhub",
+  "productName": "English Hub",
+  "copyright": "English Hub",
+  "directories": {
+    "output": "out",
+    "buildResources": "electron"
+  },
+  "files": [
+    "www/**/*",
+    "electron/main.js",
+    "package.json"
+  ],
+  "asar": false,
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "electron/icon.png"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "perMachine": false,
+    "createDesktopShortcut": true,
+    "artifactName": "EnglishHub_Setup.${ext}"
+  },
+  "mac": {
+    "target": [
+      {
+        "target": "dmg",
+        "arch": [
+          "universal"
+        ]
+      }
+    ],
+    "icon": "electron/icon.png",
+    "category": "public.app-category.education",
+    "identity": null,
+    "hardenedRuntime": false,
+    "gatekeeperAssess": false
+  },
+  "dmg": {
+    "artifactName": "EnglishHub.${ext}"
+  }
+}
