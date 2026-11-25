@@ -1,0 +1,10 @@
+{
+  "name": "english-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "English Hub \u2014 Interactive British English learning app for Arabic speakers (Pre-Entry to Level 2)",
+  "scripts": {
+    "build": "node scripts/stage-web.mjs",
+    "start": "npx serve ."
+  }
+}
