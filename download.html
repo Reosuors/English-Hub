@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>English Hub — حمّل تطبيق تعلّم الإنجليزية لجميع الأجهزة</title>
+<meta name="description" content="حمّل تطبيق English Hub لتعلّم الإنجليزية خطوة بخطوة (Pre-Entry إلى Level 2) مجاناً على أندرويد، آيفون، ويندوز، ماك، والويب.">
+<meta name="theme-color" content="#111113">
+<meta property="og:type" content="website">
+<meta property="og:title" content="English Hub — حمّل التطبيق مجاناً لجميع الأجهزة">
+<meta property="og:description" content="أندرويد • آيفون • ويندوز • ماك • ويب — تعلّم الإنجليزية البريطانية بسهولة وبشكل تفاعلي مجاناً.">
+<meta property="og:image" content="https://english-hub-download.sites.tab.bot/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://english-hub-download.sites.tab.bot/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FF9A3D'/%3E%3Cstop offset='1' stop-color='%23E8461E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='112' fill='url(%23g)'/%3E%3Cpath d='M126 150 h260 a44 44 0 0 1 44 44 v120 a44 44 0 0 1 -44 44 h-150 l-62 52 v-52 h-48 a44 44 0 0 1 -44 -44 v-120 a44 44 0 0 1 44 -44z' fill='%23fff'/%3E%3Ctext x='256' y='300' font-family='Arial,sans-serif' font-size='140' font-weight='900' text-anchor='middle' fill='%231B1B2F'%3EAa%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#111113;
+  --surface:#1c1c1f;
+  --surface-2:#26262a;
+  --line:#2f2f35;
+  --text:#f4f4f6;
+  --muted:#a3a3ad;
+  --orange:#ff7a1a;
+  --orange-2:#ff9447;
+  --on-orange:#1a1206;
+  --mint:#bdebd2;
+  --lavender:#d4c8ff;
+  --sky:#c2e0ff;
+  --peach:#ffcfb5;
+  --yellow:#fbe6a2;
+  --ink:#17171b;
+  --r:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Cairo","Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+html[lang="en"] body{
+  font-family:"Plus Jakarta Sans","Cairo",system-ui,-apple-system,sans-serif;
+  line-height:1.58;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(65% 38% at 50% 0%, rgba(255,122,26,.16), transparent 72%),
+    radial-gradient(40% 25% at 85% 22%, rgba(212,200,255,.07), transparent 70%);
+}
+a{color:inherit;text-decoration:none}
+.ltr{direction:ltr;unicode-bidi:embed}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+
+/* Top Bar */
+header.top{
+  position:sticky;
+  top:0;
+  z-index:30;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  background:rgba(17,17,19,.82);
+  border-bottom:1px solid var(--line);
+}
+header.top .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  height:64px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  font-size:1.05rem;
+}
+.brand-ic{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  overflow:hidden;
+  flex:none;
+  box-shadow:0 4px 14px rgba(255,122,26,.25);
+}
+.lang-btn{
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--text);
+  font:inherit;
+  font-weight:700;
+  font-size:.88rem;
+  padding:7px 15px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:border-color .15s, background .15s;
+}
+.lang-btn:hover{border-color:var(--orange);background:var(--surface-2)}
+
+/* Hero */
+.hero{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+  align-items:center;
+  padding:40px 0 32px;
+  text-align:center;
+}
+@media(min-width:860px){
+  .hero{
+    grid-template-columns:1.25fr .75fr;
+    text-align:start;
+    padding:54px 0 42px;
+  }
+  .hero-icon-wrap,.badges,.cta{justify-content:flex-start}
+}
+.hero-icon-wrap{display:flex;justify-content:center;margin-bottom:16px}
+.hero-logo{
+  width:92px;
+  height:92px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 14px 36px rgba(255,122,26,.28);
+}
+h1{
+  margin:0 0 10px;
+  font-size:clamp(2rem, 5vw, 2.85rem);
+  font-weight:900;
+  letter-spacing:-.02em;
+  line-height:1.18;
+}
+h1 span.accent{color:var(--orange)}
+.lead{
+  margin:0 0 20px;
+  color:var(--muted);
+  font-size:1.05rem;
+  max-width:560px;
+}
+@media(max-width:859px){.lead{margin-inline:auto}}
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:24px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 13px;
+  border-radius:999px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  font-size:.84rem;
+  font-weight:700;
+  color:var(--muted);
+}
+.badge b{color:var(--text)}
+.badge.hi{border-color:rgba(255,122,26,.45);color:#ffd5b5;background:rgba(255,122,26,.1)}
+.cta{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:48px;
+  padding:0 22px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:.97rem;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:transform .12s, background .15s, border-color .15s;
+}
+.btn:active{transform:scale(.97)}
+.btn-orange{background:var(--orange);color:var(--on-orange)}
+.btn-orange:hover{background:var(--orange-2)}
+.btn-ghost{background:var(--surface);border-color:var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--orange);background:var(--surface-2)}
+.btn-sm{min-height:40px;padding:0 16px;font-size:.88rem}
+.btn-full{width:100%}
+
+/* Preview Phone */
+.preview-wrap{display:flex;justify-content:center}
+.phone-frame{
+  width:min(255px, 72vw);
+  border-radius:30px;
+  padding:9px;
+  background:linear-gradient(155deg, #2b2b31, #18181b);
+  border:1px solid #3a3a42;
+  box-shadow:0 22px 60px rgba(0,0,0,.55);
+}
+.phone-frame img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:22px;
+}
+
+/* Section Headers */
+.sec-head{margin:18px 0 20px}
+.sec-head h2{margin:0 0 4px;font-size:1.55rem;font-weight:800}
+.sec-head p{margin:0;color:var(--muted);font-size:.95rem}
+
+/* Download Grid */
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+@media(min-width:680px){.grid{grid-template-columns:repeat(2, 1fr)}}
+@media(min-width:980px){.grid{grid-template-columns:repeat(3, 1fr)}}
+
+.card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:20px;
+  transition:border-color .18s, transform .18s;
+}
+.card:hover{border-color:rgba(255,122,26,.45)}
+.card.is-mine{
+  border-color:var(--orange);
+  box-shadow:0 0 0 1px rgba(255,122,26,.35), 0 12px 32px rgba(255,122,26,.12);
+}
+.mine-tag{
+  display:none;
+  position:absolute;
+  top:14px;
+  inset-inline-end:14px;
+  background:var(--orange);
+  color:var(--on-orange);
+  font-size:.75rem;
+  font-weight:800;
+  padding:3px 10px;
+  border-radius:999px;
+}
+.card.is-mine .mine-tag{display:inline-flex}
+.card-top{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-bottom:12px;
+}
+.plat-ic{
+  width:46px;
+  height:46px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  flex:none;
+  color:var(--ink);
+}
+.plat-ic.mint{background:var(--mint)}
+.plat-ic.lavender{background:var(--lavender)}
+.plat-ic.sky{background:var(--sky)}
+.plat-ic.peach{background:var(--peach)}
+.plat-ic.yellow{background:var(--yellow)}
+.plat-ic.orange{background:var(--orange);color:var(--on-orange)}
+.card h3{margin:0;font-size:1.15rem;font-weight:800;line-height:1.25}
+.meta{color:var(--muted);font-size:.83rem;font-weight:600;margin-top:2px}
+.card-desc{margin:0 0 14px;color:var(--muted);font-size:.9rem}
+.actions{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.steps{
+  margin:auto 0 0;
+  padding:12px 14px 12px 14px;
+  padding-inline-start:28px;
+  background:var(--surface-2);
+  border-radius:14px;
+  font-size:.84rem;
+  color:#d2d2da;
+}
+.steps li{margin:4px 0}
+.steps b{color:var(--text)}
+.note{
+  margin-top:10px;
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(255,122,26,.09);
+  border:1px solid rgba(255,122,26,.22);
+  font-size:.82rem;
+  color:#ffd8bc;
+}
+
+/* Highlights strip */
+.features{
+  margin:34px 0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+  gap:12px;
+}
+.feat{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px 16px;
+}
+.feat strong{display:block;font-size:.96rem;margin-bottom:3px}
+.feat span{color:var(--muted);font-size:.85rem}
+
+footer{
+  margin-top:34px;
+  padding:22px 0 40px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:.86rem;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:10px;
+}
+footer a{color:var(--orange);font-weight:700}
+footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand-ic" aria-hidden="true">
+        <svg viewBox="0 0 512 512" width="38" height="38"><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF9A3D"/><stop offset="1" stop-color="#E8461E"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#bg1)"/><path d="M126 150 h260 a44 44 0 0 1 44 44 v120 a44 44 0 0 1 -44 44 h-150 l-62 52 v-52 h-48 a44 44 0 0 1 -44 -44 v-120 a44 44 0 0 1 44 -44z" fill="#fff"/><text x="256" y="300" font-family="Arial,sans-serif" font-size="144" font-weight="900" text-anchor="middle" fill="#1B1B2F">Aa</text></svg>
+      </span>
+      <span>English Hub</span>
+    </a>
+    <button class="lang-btn" id="langBtn" type="button">English</button>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero">
+    <div>
+      <div class="hero-icon-wrap">
+        <div class="hero-logo" aria-hidden="true">
+          <svg viewBox="0 0 512 512" width="92" height="92">
+            <defs>
+              <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF9A3D"/><stop offset="1" stop-color="#E8461E"/></linearGradient>
+              <linearGradient id="sh2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#FFEBDD"/></linearGradient>
+            </defs>
+            <rect width="512" height="512" rx="112" fill="url(#bg2)"/>
+            <circle cx="430" cy="80" r="150" fill="#ffffff" opacity="0.09"/>
+            <path d="M126 150 h260 a44 44 0 0 1 44 44 v120 a44 44 0 0 1 -44 44 h-150 l-62 52 v-52 h-48 a44 44 0 0 1 -44 -44 v-120 a44 44 0 0 1 44 -44z" fill="url(#sh2)"/>
+            <text x="256" y="300" font-family="Arial,Helvetica,sans-serif" font-size="140" font-weight="900" text-anchor="middle" fill="#1B1B2F" letter-spacing="-4">Aa</text>
+            <g transform="translate(332 92) rotate(12)">
+              <polygon points="0,30 70,0 140,30 70,60" fill="#1B1B2F"/>
+              <path d="M30 42 v30 q40 22 80 0 v-30 l-40 18z" fill="#1B1B2F"/>
+              <line x1="132" y1="33" x2="132" y2="78" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/>
+              <circle cx="132" cy="82" r="8" fill="#FFD23F"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <h1><span data-en="Learn English with">تعلّم الإنجليزية مع</span> <span class="accent">English Hub</span></h1>
+      <p class="lead" data-en="Step-by-step British English learning from Pre-Entry to Level 2 — grammar, vocabulary, spelling, reading, writing, listening, speaking and real-life practice. Free and works offline.">
+        تطبيق تفاعلي لتعلّم الإنجليزية البريطانية خطوة بخطوة من التأسيس (Pre-Entry) حتى المستوى الثاني (Level 2) — قواعد، مفردات، إملاء، قراءة، كتابة، استماع ومحادثة يومية. مجاني ويعمل بدون إنترنت.
+      </p>
+
+      <div class="badges">
+        <span class="badge hi"><span data-en="Latest Release">آخر إصدار</span> <b class="ltr" id="ver">1.0.1</b></span>
+        <span class="badge" data-en="Android • iPhone • Windows • Mac • Web">أندرويد • آيفون • ويندوز • ماك • ويب</span>
+        <span class="badge" data-en="Free &amp; Offline Ready">مجاني ويعمل بدون نت</span>
+      </div>
+
+      <div class="cta">
+        <a class="btn btn-orange" href="https://english-hub.sites.tab.bot/" data-en="Open Web App Now">افتح تطبيق الويب الآن</a>
+        <a class="btn btn-ghost" href="#download" data-en="Download for Your Device ↓">حمّل لجهازك ↓</a>
+      </div>
+    </div>
+
+    <div class="preview-wrap" id="previewWrap">
+      <div class="phone-frame">
+        <img src="preview.webp" alt="معاينة تطبيق English Hub" data-en-alt="English Hub app preview" width="460" height="995" onerror="document.getElementById('previewWrap').hidden=true">
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="sec-head">
+      <h2 data-en="Download for Your Device">حمّل التطبيق لجهازك</h2>
+      <p data-en="All links automatically point to the newest version on GitHub Releases.">جميع الروابط تُحدَّث تلقائياً لآخر إصدار متوفر.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Web App -->
+      <article class="card" id="c-web">
+        <div class="card-top">
+          <div class="plat-ic orange" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <h3 data-en="Web App">تطبيق الويب</h3>
+            <div class="meta" data-en="Instant • No install needed">فوري • بدون تثبيت</div>
+          </div>
+        </div>
+        <p class="card-desc" data-en="Start studying right away in any browser with offline PWA support and local progress saving.">ابدأ التعلّم فوراً من أي متصفح مع حفظ تلقائي لتقدّمك وعمل بدون إنترنت.</p>
+        <div class="actions">
+          <a class="btn btn-orange btn-full" href="https://english-hub.sites.tab.bot/" data-en="Open English Hub Web">افتح الموقع المباشر</a>
+          <a class="btn btn-ghost btn-sm btn-full" id="localCopyBtn" href="./index.html" data-en="Open Local Copy (./index.html)">فتح النسخة المحلية (index.html)</a>
+        </div>
+      </article>
+
+      <!-- Android -->
+      <article class="card" id="c-android">
+        <span class="mine-tag" data-en="Your device">جهازك</span>
+        <div class="card-top">
+          <div class="plat-ic mint" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <div>
+            <h3 data-en="Android">أندرويد</h3>
+            <div class="meta"><span data-en="APK installer">ملف APK</span> <span data-size-wrap="EnglishHub.apk" hidden>· <span class="ltr" data-size="EnglishHub.apk"></span></span></div>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-orange btn-full" href="https://github.com/Reosuors/English-Hub/releases/latest/download/EnglishHub.apk" data-en="Download Android APK">تحميل لأندرويد (APK)</a>
+        </div>
+        <ol class="steps">
+          <li data-en="Open the downloaded <b>EnglishHub.apk</b> from notifications or <b>Downloads</b>.">افتح ملف <b>EnglishHub.apk</b> من الإشعارات أو مجلد <b>التنزيلات</b>.</li>
+          <li data-en="If blocked, tap <b>Settings</b> and enable <b>Allow from this source</b>.">إذا ظهر تنبيه الحماية، اضغط <b>الإعدادات</b> وفعّل <b>السماح من هذا المصدر</b>.</li>
+          <li data-en="Go back and tap <b>Install</b>.">ارجع واضغط <b>تثبيت</b>.</li>
+        </ol>
+      </article>
+
+      <!-- iPhone & iPad -->
+      <article class="card" id="c-ios">
+        <span class="mine-tag" data-en="Your device">جهازك</span>
+        <div class="card-top">
+          <div class="plat-ic lavender" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4"/></svg>
+          </div>
+          <div>
+            <h3 data-en="iPhone &amp; iPad">آيفون وآيباد</h3>
+            <div class="meta" data-en="Web App via Safari (PWA)">إضافة سريعة عبر سفاري</div>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-orange btn-full" href="https://english-hub.sites.tab.bot/" data-en="Open in Safari">افتح في سفاري (Safari)</a>
+        </div>
+        <ol class="steps">
+          <li data-en="Open the link above in <b>Safari</b>.">افتح الرابط أعلاه في متصفح <b>Safari</b>.</li>
+          <li data-en="Tap the <b>Share</b> icon at the bottom of the screen.">اضغط زر <b>المشاركة</b> أسفل الشاشة.</li>
+          <li data-en="Choose <b>Add to Home Screen</b> then tap <b>Add</b>.">اختر <b>إضافة إلى الشاشة الرئيسية</b> ثم <b>إضافة</b>.</li>
+        </ol>
+      </article>
+
+      <!-- Windows -->
+      <article class="card" id="c-win">
+        <span class="mine-tag" data-en="Your device">جهازك</span>
+        <div class="card-top">
+          <div class="plat-ic sky" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg>
+          </div>
+          <div>
+            <h3 data-en="Windows">ويندوز</h3>
+            <div class="meta"><span data-en="Windows 10/11 (64-bit)">ويندوز 10 / 11 (64-bit)</span> <span data-size-wrap="EnglishHub-Setup.exe" hidden>· <span class="ltr" data-size="EnglishHub-Setup.exe"></span></span></div>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-orange btn-full" href="https://github.com/Reosuors/English-Hub/releases/latest/download/EnglishHub-Setup.exe" data-en="Download for Windows (.exe)">تحميل لويندوز (.exe)</a>
+        </div>
+        <div class="note" data-en="If Windows SmartScreen appears, click <b>More info</b> then <b>Run anyway</b> to finish installing.">
+          إذا ظهرت نافذة حماية <b>Windows SmartScreen</b>، اضغط <b>معلومات إضافية (More info)</b> ثم <b>التشغيل على أي حال (Run anyway)</b>.
+        </div>
+      </article>
+
+      <!-- Mac -->
+      <article class="card" id="c-mac">
+        <span class="mine-tag" data-en="Your device">جهازك</span>
+        <div class="card-top">
+          <div class="plat-ic peach" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M2 20h20"/></svg>
+          </div>
+          <div>
+            <h3 data-en="macOS">ماك (Mac)</h3>
+            <div class="meta"><span data-en="Apple Silicon &amp; Intel (Universal)">أبل سيليكون وإنتل (DMG)</span> <span data-size-wrap="EnglishHub.dmg" hidden>· <span class="ltr" data-size="EnglishHub.dmg"></span></span></div>
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-orange btn-full" href="https://github.com/Reosuors/English-Hub/releases/latest/download/EnglishHub.dmg" data-en="Download for Mac (.dmg)">تحميل لماك (.dmg)</a>
+        </div>
+        <div class="note" data-en="Drag <b>English Hub</b> into <b>Applications</b>. On first launch, <b>right-click → Open</b> to approve it.">
+          اسحب <b>English Hub</b> إلى مجلد <b>التطبيقات (Applications)</b>. في أول تشغيل اضغط <b>كليك يمين ← فتح (Open)</b>.
+        </div>
+      </article>
+
+      <!-- Web Source ZIP -->
+      <article class="card" id="c-zip">
+        <div class="card-top">
+          <div class="plat-ic yellow" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg>
+          </div>
+          <div>
+            <h3 data-en="Web Source ZIP">ملفات الموقع الكاملة (ZIP)</h3>
+            <div class="meta"><span data-en="All 52 editable files">جميع ملفات الويب الـ 52</span> <span data-size-wrap="EnglishHub-Web.zip" hidden>· <span class="ltr" data-size="EnglishHub-Web.zip"></span></span></div>
+          </div>
+        </div>
+        <p class="card-desc" data-en="Clean static HTML, CSS, JS, fonts and icons ready to edit or self-host anywhere with zero build step.">ملفات HTML و CSS و JS والخطوط والأيقونات كاملة وجاهزة للتعديل أو الرفع على أي استضافة بدون خطوات بناء.</p>
+        <div class="actions">
+          <a class="btn btn-ghost btn-full" href="https://github.com/Reosuors/English-Hub/releases/latest/download/EnglishHub-Web.zip" data-en="Download Web Source (.zip)">تحميل ملفات الويب (.zip)</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="features">
+      <div class="feat">
+        <strong data-en="Pre-Entry to Level 2">من التأسيس حتى Level 2</strong>
+        <span data-en="Placement test, structured lessons, daily XP goals and streaks.">اختبار تحديد مستوى، دروس متدرّجة، وأهداف يومية.</span>
+      </div>
+      <div class="feat">
+        <strong data-en="All Core Skills">كل مهارات اللغة</strong>
+        <span data-en="Grammar, vocabulary, spelling, reading, writing, listening, speaking and idioms.">قواعد، مفردات، إملاء، قراءة، كتابة، استماع، محادثة وتعبير.</span>
+      </div>
+      <div class="feat">
+        <strong data-en="11 Custom Themes">11 ثيم و5 تصاميم</strong>
+        <span data-en="Dark, Ocean, Forest, Light, High Contrast and adjustable text size.">ثيمات ليلية ونهارية ومقاسات خط مريحة للقراءة.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>English Hub · <span data-en="Free British English learning app">تطبيق مجاني لتعلّم اللغة الإنجليزية</span></span>
+    <span>
+      <a href="https://github.com/Reosuors/English-Hub" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/Reosuors/English-Hub/releases/latest" target="_blank" rel="noopener" data-en="All Release Files">كل ملفات الإصدار</a>
+    </span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  // Language switcher (Arabic default <-> English)
+  var btn = document.getElementById('langBtn');
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-en]'));
+  nodes.forEach(function(el){ el.dataset.ar = el.innerHTML; });
+  var altNodes = Array.prototype.slice.call(document.querySelectorAll('[data-en-alt]'));
+  altNodes.forEach(function(el){ el.dataset.arAlt = el.getAttribute('alt') || ''; });
+
+  function setLang(lang){
+    var en = lang === 'en';
+    document.documentElement.lang = en ? 'en' : 'ar';
+    document.documentElement.dir = en ? 'ltr' : 'rtl';
+    btn.textContent = en ? 'العربية' : 'English';
+    nodes.forEach(function(el){ el.innerHTML = en ? el.dataset.en : el.dataset.ar; });
+    altNodes.forEach(function(el){ el.setAttribute('alt', en ? el.dataset.enAlt : el.dataset.arAlt); });
+    document.title = en
+      ? 'English Hub — Download for Android, iPhone, Windows, Mac & Web'
+      : 'English Hub — حمّل تطبيق تعلّم الإنجليزية لجميع الأجهزة';
+    try { localStorage.setItem('eh_dl_lang', lang); } catch(e){}
+  }
+
+  btn.addEventListener('click', function(){
+    setLang(document.documentElement.lang === 'en' ? 'ar' : 'en');
+  });
+  try {
+    if (localStorage.getItem('eh_dl_lang') === 'en') setLang('en');
+  } catch(e){}
+
+  // Show local ./index.html link when opened as download.html (hide on standalone download site)
+  var lc = document.getElementById('localCopyBtn');
+  if (lc && !/download\.html$/i.test(location.pathname)) lc.hidden = true;
+
+  // Highlight visitor's current platform
+  var ua = navigator.userAgent || '';
+  var id = /Android/i.test(ua) ? 'c-android'
+    : /iPhone|iPad|iPod/i.test(ua) ? 'c-ios'
+    : /Windows/i.test(ua) ? 'c-win'
+    : /Macintosh|Mac OS X/i.test(ua) ? 'c-mac' : '';
+  if (id) {
+    var card = document.getElementById(id);
+    if (card) card.classList.add('is-mine');
+  }
+
+  // Fetch latest release version & exact file sizes from GitHub API
+  function fmtSize(b){
+    if (!b) return '';
+    if (b < 1024 * 1024) return Math.round(b / 1024) + ' KB';
+    return (b / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+  fetch('https://api.github.com/repos/Reosuors/English-Hub/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(rel){
+      if (!rel) return;
+      if (rel.tag_name) {
+        var verEl = document.getElementById('ver');
+        if (verEl) verEl.textContent = rel.tag_name.replace(/^v/, '');
+      }
+      (rel.assets || []).forEach(function(a){
+        var el = document.querySelector('[data-size="' + a.name + '"]');
+        var wrap = document.querySelector('[data-size-wrap="' + a.name + '"]');
+        if (el && a.size) {
+          el.textContent = fmtSize(a.size);
+          if (wrap) wrap.hidden = false;
+        }
+      });
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
